@@ -13,6 +13,7 @@ import Ui from "../widgets/Ui";
 import Overview from "../widgets/Overview";
 import SimpleArray from "../widgets/SimpleArray";
 import Picture from "../widgets/Picture";
+import Text from "../widgets/Text";
 import { Button } from "devextreme-react";
 
 const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetData, widgetData }) => {
@@ -20,7 +21,8 @@ const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetDa
 		"Ui": React.createElement(Ui, null),
 		"Overview": <Overview base={widgetData[i] ? widgetData[i][1] : []} complaintsData={widgetData[i] ? widgetData[i][0] : []} />,
 		"Simple Array": <SimpleArray columns={widgetData[i] ? widgetData[i][1] : []} dataSource={widgetData[i] ? widgetData[i][0] : []} />,
-		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} />
+		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} />,
+		"Text": <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} setWidgetData={setWidgetData}/>
 	};
 
 	return (
@@ -32,7 +34,7 @@ const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetDa
 				className={`${styles.header} && ${!isEditorModeOn && styles.headerInReadOnlyMode
 					}`}
 			>
-				{isEditorModeOn && (widgetsArray[i] !== 'Picture') && (widgetsArray[i] !== 'Ui') && (<Menu>
+				{isEditorModeOn && (widgetsArray[i] !== 'Text') && (widgetsArray[i] !== 'Picture') && (widgetsArray[i] !== 'Ui') && (<Menu>
 					<MenuButton
 						as={IconButton}
 						aria-label="add-widget-options"
@@ -126,7 +128,7 @@ const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetDa
 					}} size="sm" />
 				)}
 			</header>
-			<div id={i} className={styles.body}>{displayedWidget[widgetsArray[i]]}</div>
+			<div id={i} style={{display:'flex', justifyContent:'center', alignItems:'center'}} className={styles.body}>{displayedWidget[widgetsArray[i]]}</div>
 		</div >
 	);
 };

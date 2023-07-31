@@ -20,7 +20,8 @@ const AppHeader = ({ isEditorModeOn, layout, setIsEditorModeOn, addWidget, setLa
 		"Ui",
 		"Overview",
 		"Simple Array",
-		"Picture"
+		"Picture",
+		"Text"
 	];
 	/* const availableWidgetOptions = allWidgetOptions.filter(
 	  (option) => !layout.some((widget) => widget.i === option)

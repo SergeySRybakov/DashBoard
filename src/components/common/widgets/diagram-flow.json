@@ -1,13 +1,4 @@
 {
-	"page": {
-		"width": 8391,
-		"height": 11907,
-		"pageWidth": 8391,
-		"pageHeight": 11906,
-		"pageLandscape": false,
-		"gridSize": 180,
-		"snapToGrid": true
-	},
 	"connectors": [{
 			"key": "116",
 			"points": [{

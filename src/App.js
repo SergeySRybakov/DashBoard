@@ -17,7 +17,6 @@ export const App = () => {
 	const [widgetsArray, setArray] = useState([]);
 	const [widgetData, setWidgetData] = useState([]);
 
-
 	/**
 	 * @description Add a new widget add the end of the current widget layout.
 	 * @param i index/identifer of widget
