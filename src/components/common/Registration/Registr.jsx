@@ -19,9 +19,9 @@ const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, se
 		password: ''
 	}
 	const handleSignUpButtonClick = () => {
-		data.email = document.getElementById('EmailSignUp').value;
-		data.password = document.getElementById('PasSignUp').value;
-		authService.signUp(data)
+		const email = document.getElementById('EmailSignUp').value;
+		const password = document.getElementById('PasSignUp').value;
+		authService.signUp({email:email, password:password})
 			.then((response) => {
 				setIsAuthorised(true);
 				setIsEditorModeOn(true);
@@ -32,9 +32,9 @@ const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, se
 			})
 	}
 	const handleLogInButtonClick = () => {
-		data.email = document.getElementById('LogInEmail').value;
-		data.password = document.getElementById('LogInPas').value;
-		authService.logIn(data)
+		const email = document.getElementById('LogInEmail').value;
+		const password = document.getElementById('LogInPas').value;
+		authService.logIn({email:email, password:password})
 			.then(function (response) {
 				setIsAuthorised(true);
 				setIsEditorModeOn(true);
