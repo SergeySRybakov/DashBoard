@@ -6,13 +6,13 @@ const Text = ({ isEditorModeOn, i, widgetData, setWidgetData }) => {
     let textData = 'Nothing';
     return (
         <>
-            <Button position={'relative'} onClick={() => {
+            { isEditorModeOn && <Button position={'relative'} onClick={() => {
                 textData = document.getElementById(`${i}textWidget`).value;
                 console.log(textData)
                 let obj = Object.assign([], widgetData);
                 obj[i] = textData;
                 setWidgetData(obj);
-            }}>SaveText</Button>
+            }}>SaveText</Button>}
             {isEditorModeOn ?
                 <Textarea value={widgetData[i]} id={`${i}textWidget`} maxHeight={'100%'} />
                 :
