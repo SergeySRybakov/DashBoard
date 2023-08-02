@@ -16,7 +16,7 @@ import styles from "./AppHeader.module.css";
 import { AddIcon } from "@chakra-ui/icons";
 import { Button } from "devextreme-react";
 
-const AppHeader = ({ isEditorModeOn, layout, counter, setIsEditorModeOn, addWidget, setLayout, setAuthorised, isAuthorised, widgetsArray, setArray, data, setCounter, setWidgetData }) => {
+const AppHeader = ({ isEditorModeOn, layout, counter, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, widgetsArray, setArray, data, setCounter, setWidgetData }) => {
 	const allWidgetOptions = [
 		"Overview",
 		"Simple Array",
@@ -80,7 +80,7 @@ const AppHeader = ({ isEditorModeOn, layout, counter, setIsEditorModeOn, addWidg
 				<Registr
 					setLayout={setLayout}
 					setIsEditorModeOn={setIsEditorModeOn}
-					setAuthorised={setAuthorised}
+					setIsAuthorised={setIsAuthorised}
 					setCounter={setCounter}
 					setArray={setArray}
 					setWidgetData={setWidgetData}

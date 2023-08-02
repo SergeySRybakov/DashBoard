@@ -13,7 +13,7 @@ import {
 	FormLabel
 } from '@chakra-ui/react'
 
-const Registr = ({ setLayout, setIsEditorModeOn, setAuthorised, setCounter, setArray, setWidgetData }) => {
+const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, setArray, setWidgetData }) => {
 	let data = {
 		email: '',
 		password: ''
@@ -23,11 +23,11 @@ const Registr = ({ setLayout, setIsEditorModeOn, setAuthorised, setCounter, setA
 		data.password = document.getElementById('PasSignUp').value;
 		authService.signUp(data)
 			.then((response) => {
-				setAuthorised(true);
+				setIsAuthorised(true);
 				setIsEditorModeOn(true);
 			})
 			.catch((error) => {
-				setAuthorised(false);
+				setIsAuthorised(false);
 				setIsEditorModeOn(false);
 			})
 	}
@@ -36,12 +36,12 @@ const Registr = ({ setLayout, setIsEditorModeOn, setAuthorised, setCounter, setA
 		data.password = document.getElementById('LogInPas').value;
 		authService.logIn(data)
 			.then(function (response) {
-				setAuthorised(true);
+				setIsAuthorised(true);
 				setIsEditorModeOn(true);
 				console.log(response)
 			})
 			.catch(function (error) {
-				setAuthorised(false);
+				setIsAuthorised(false);
 				setIsEditorModeOn(false);
 			})
 		dashboardService.loadSavings()
