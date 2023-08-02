@@ -18,7 +18,6 @@ import { Button } from "devextreme-react";
 
 const AppHeader = ({ isEditorModeOn, layout, counter, setIsEditorModeOn, addWidget, setLayout, setAuthorised, isAuthorised, widgetsArray, setArray, data, setCounter, setWidgetData }) => {
 	const allWidgetOptions = [
-		"Ui",
 		"Overview",
 		"Simple Array",
 		"Picture",

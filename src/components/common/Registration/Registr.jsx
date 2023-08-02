@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, ButtonGroup, } from '@chakra-ui/react';
 import { Input } from '@chakra-ui/react';
-import axios from 'axios';
 import { authService } from '../../../backend/auth.service';
 import { dashboardService } from '../../../backend/dashboard.service';
 import {
@@ -19,6 +18,46 @@ const Registr = ({ setLayout, setIsEditorModeOn, setAuthorised, setCounter, setA
 		email: '',
 		password: ''
 	}
+	const handleSignUpButtonClick = () => {
+		data.email = document.getElementById('EmailSignUp').value;
+		data.password = document.getElementById('PasSignUp').value;
+		authService.signUp(data)
+			.then((response) => {
+				setAuthorised(true);
+				setIsEditorModeOn(true);
+			})
+			.catch((error) => {
+				setAuthorised(false);
+				setIsEditorModeOn(false);
+			})
+	}
+	const handleLogInButtonClick = () => {
+		data.email = document.getElementById('LogInEmail').value;
+		data.password = document.getElementById('LogInPas').value;
+		authService.logIn(data)
+			.then(function (response) {
+				setAuthorised(true);
+				setIsEditorModeOn(true);
+				console.log(response)
+			})
+			.catch(function (error) {
+				setAuthorised(false);
+				setIsEditorModeOn(false);
+			})
+		dashboardService.loadSavings()
+			.then(function (response) {
+				let info = JSON.parse(response.data['dashes']);
+				setLayout(info.layout);
+				setCounter(info.counter);
+				setArray(info.widgets);
+				setWidgetData(info.data);
+				console.log(info)
+				console.log(response)
+			})
+			.catch(function (error) {
+				console.log(error);
+			})
+	}
 	return (
 		<ButtonGroup spacing={4} direction='row' align='center'>
 			<Menu>
@@ -34,30 +73,7 @@ const Registr = ({ setLayout, setIsEditorModeOn, setAuthorised, setCounter, setA
 						<FormLabel>Password</FormLabel>
 						<Input id='PasSignUp' borderRadius={0} placeholder='Password' type='password' />
 					</FormControl>
-					<Button onClick={() => {
-						data.email = document.getElementById('EmailSignUp').value;
-						data.password = document.getElementById('PasSignUp').value;
-						/* axios
-							.post("./static/backend/registr.php", data)
-							.then(function (response) {
-								setAuthorised(true);
-								setIsEditorModeOn(true);
-							})
-							.catch(function (error) {
-								// обработка ошибки
-								setAuthorised(false);
-								setIsEditorModeOn(false);
-							}) */
-						authService.signUp(data)
-							.then((response) => {
-								setAuthorised(true);
-								setIsEditorModeOn(true);
-							})
-							.catch((error) => {
-								setAuthorised(false);
-								setIsEditorModeOn(false);
-							})
-					}} borderRadius={0} width="full" mt={4} type="submit">
+					<Button onClick={handleSignUpButtonClick} borderRadius={0} width="full" mt={4} type="submit">
 						Sign In
 					</Button>
 				</MenuList>
@@ -75,63 +91,11 @@ const Registr = ({ setLayout, setIsEditorModeOn, setAuthorised, setCounter, setA
 						<FormLabel>Password</FormLabel>
 						<Input id='LogInPas' borderRadius={0} placeholder='Password' type='password' />
 					</FormControl>
-					<Button onClick={() => {
-						data.email = document.getElementById('LogInEmail').value;
-						data.password = document.getElementById('LogInPas').value;
-						/* axios
-							.post("./static/backend/autoris.php", data)
-							.then(function (response) {
-								setAuthorised(true);
-								setIsEditorModeOn(true);
-								console.log(response)
-							})
-							.catch(function (error) {
-								setAuthorised(false);
-								setIsEditorModeOn(false);
-							})
-						axios
-							.get("./static/backend/loadSavings.php")
-							.then(function (response) {
-								let info = JSON.parse(response.data['dashes']);
-								setLayout(JSON.parse(response.data['dashes']).layout ? JSON.parse(response.data['dashes']).layout : []);
-								setCounter(info.counter);
-								setArray(info.widgets);
-								setWidgetData(info.data);
-							})
-							.catch(function (error) {
-								console.log(error);
-							}); */
-						authService.logIn(data)
-							.then(function (response) {
-								setAuthorised(true);
-								setIsEditorModeOn(true);
-								console.log(response)
-							})
-							.catch(function (error) {
-								setAuthorised(false);
-								setIsEditorModeOn(false);
-							})
-						dashboardService.loadSavings()
-							.then(function (response) {
-								let info = JSON.parse(response.data['dashes']);
-								setLayout(info.layout);
-								setCounter(info.counter);
-								setArray(info.widgets);
-								setWidgetData(info.data);
-								console.log(info)
-								console.log(response)
-							})
-							.catch(function (error) {
-								console.log(error);
-							})
-					}} borderRadius={0} width="full" mt={4} type="submit">
+					<Button onClick={handleLogInButtonClick} borderRadius={0} width="full" mt={4} type="submit">
 						Log In
 					</Button>
 				</MenuList>
 			</Menu>
-			{/* <Button onClick={() => {setAuthorised(false)}}>
-				DeLogin
-			</ Button> */}
 		</ButtonGroup>
 	);
 }
