@@ -14,10 +14,6 @@ import {
 } from '@chakra-ui/react'
 
 const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, setArray, setWidgetData }) => {
-	let data = {
-		email: '',
-		password: ''
-	}
 	const handleSignUpButtonClick = () => {
 		const email = document.getElementById('EmailSignUp').value;
 		const password = document.getElementById('PasSignUp').value;
