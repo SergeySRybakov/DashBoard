@@ -1,28 +1,27 @@
 import React from 'react'
 import { Button } from '@chakra-ui/react'
-import axios from 'axios'
+import { dashboardService } from '../../../backend/dashboard.service'
 
-const LoadSavings = ({ setLayout, setCounter, setWidget, widgetsArray, setArray, setWidgetData }) => {
-	return (
-		<Button fontSize={'x-small'} colorScheme='blue' size='lg' variant='solid' onClick={async () => {
-			await axios
-				.get("./static/api/loadSavings.php")
-				.then(function (response) {
-					// обработка успешного запрос
+const LoadSavings = ({ setLayout, setCounter, widgetsArray, setArray, setWidgetData }) => {
+	const handleLoadSavingsButtonClick = () => {
+		dashboardService.loadSavings()
+				.then((response) => {
 					let info = JSON.parse(response.data['dashes']);
-					setLayout(JSON.parse(response.data['dashes']).layout ? JSON.parse(response.data['dashes']).layout : []);
+					setLayout(info.layout);
 					setCounter(info.counter);
 					setArray(info.widgets);
 					setWidgetData(info.data);
 					console.log(info)
+					console.log(response)
 				})
-				.catch(function (error) {
-					// обработка ошибки
+				.catch((error) => {
 					console.log(error);
-				});
-		}}>
-			Load savings
-		</Button>
+				})
+	}
+	return (
+		<Button fontSize={'x-small'} colorScheme='blue' size='lg' variant='solid' onClick={handleLoadSavingsButtonClick}>
+	Load savings
+		</Button >
 	)
 }
 

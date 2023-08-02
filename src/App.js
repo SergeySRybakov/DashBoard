@@ -8,20 +8,13 @@ import "./App.css";
 
 export const App = () => {
 
-	const NUMBER_OF_COLUMNS = 4;
+	const NUMBER_OF_COLUMNS = 6;
 	const [isEditorModeOn, setIsEditorModeOn] = useState(true);
 	const [layout, setLayout] = useState([]);
 	const [isAuthorised, setAuthorised] = useState(true);
-	const [counter, setCounter] = useState(1);
-	const [selectedWidget, setWidget] = useState('');
+	const [counter, setCounter] = useState(0);
 	const [widgetsArray, setArray] = useState([]);
 	const [widgetData, setWidgetData] = useState([]);
-
-	/**
-	 * @description Add a new widget add the end of the current widget layout.
-	 * @param i index/identifer of widget
-	 */
-
 
 	let data = {
 		'layout': layout,
@@ -33,36 +26,35 @@ export const App = () => {
 	const addWidget = () => {
 		if (layout.length) {
 			const lastWidgetPosition = layout[layout.length - 1];
-			console.log(layout);
 			setCounter(counter + 1);
+			console.log(layout);
+			console.log(lastWidgetPosition)
 			return setLayout((currentLayout) => [
 				...currentLayout,
 				{
-					i: counter,
+					i: counter + 1,
 					x: lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2
 						? 0
 						: lastWidgetPosition.x + 2,
 					y: lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2
 						? lastWidgetPosition.y + 2
-						: lastWidgetPosition.y,
+						: lastWidgetPosition.y + 2,
 					w: 2,
 					h: 2
 				},
 			]);
 		}
-		setLayout([{ i: 0, x: 0, y: 0, w: 2, h: 2 }]);
+		/* setLayout([{ i: 0, x: 1, y: 0, w: 2, h: 2 }]); */
+		setLayout([{x: 0, y: 0, i: 0, w: 2, h: 2}])
 	};
-	/**
-	 * @description Delete widget.
-	 * @param i index/identifer of widget
-	 */
+
 	const deleteWidget = (i) => setLayout((currentLayout) => currentLayout.filter((widget) => widget.i !== i));
 	return (
 		<ChakraProvider theme={theme}>
 
 			<div className={styles.App}>
 				<AppHeader
-					{...{ isEditorModeOn, layout, setIsEditorModeOn, addWidget, setLayout, setAuthorised, isAuthorised, setWidget, widgetsArray, setArray, data, setCounter, setWidgetData }}
+					{...{ isEditorModeOn, layout, counter, setIsEditorModeOn, addWidget, setLayout, setAuthorised, isAuthorised, widgetsArray, setArray, data, setCounter, setWidgetData }}
 				/>
 				<body className={styles.body}>
 					{isEditorModeOn ? (

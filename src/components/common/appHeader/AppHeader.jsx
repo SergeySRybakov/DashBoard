@@ -14,8 +14,9 @@ import {
 } from "@chakra-ui/react";
 import styles from "./AppHeader.module.css";
 import { AddIcon } from "@chakra-ui/icons";
+import { Button } from "devextreme-react";
 
-const AppHeader = ({ isEditorModeOn, layout, setIsEditorModeOn, addWidget, setLayout, setAuthorised, isAuthorised, setWidget, widgetsArray, setArray, data, setCounter, setWidgetData }) => {
+const AppHeader = ({ isEditorModeOn, layout, counter, setIsEditorModeOn, addWidget, setLayout, setAuthorised, isAuthorised, widgetsArray, setArray, data, setCounter, setWidgetData }) => {
 	const allWidgetOptions = [
 		"Ui",
 		"Overview",
@@ -50,11 +51,11 @@ const AppHeader = ({ isEditorModeOn, layout, setIsEditorModeOn, addWidget, setLa
 				<LoadSavings
 					setLayout={setLayout}
 					setCounter={setCounter}
-					setWidget={setWidget}
 					widgetsArray={widgetsArray}
 					setArray={setArray}
 					setWidgetData={setWidgetData}
 				/>
+				<Button onClick={() => console.log(layout)}>fiujjjjjjjjjjgsiufhgdifj</Button>
 				{isEditorModeOn && (
 					<Menu>
 						<MenuButton
@@ -64,22 +65,16 @@ const AppHeader = ({ isEditorModeOn, layout, setIsEditorModeOn, addWidget, setLa
 							variant="outline"
 						/>
 						<MenuList>
-							{allWidgetOptions.length ? (
-								allWidgetOptions	
-									.map((item) => (
-										<MenuItem onClick={() => {
-											addWidget();
-											setWidget(item);
-											setArray(arr => [...arr, `${item}`]);
-											}}>
-											{item}
-										</MenuItem>
-									))
-							) : (
-								<MenuItem className={styles.noMoreOptions}>
-									No options available.
-								</MenuItem>
-							)}
+							{allWidgetOptions
+								.map((item) => (
+									<MenuItem onClick={() => {
+										addWidget();
+										setArray(arr => [...arr, `${item}`]);
+									}}>
+										{item}
+									</MenuItem>
+								))
+							}
 						</MenuList>
 					</Menu>
 				)}

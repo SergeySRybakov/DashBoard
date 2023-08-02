@@ -64,6 +64,7 @@ const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetDa
 									});
 									let base = document.getElementById(`${i}textareaOverviewBase`).value.split(',').map((item) => { return item.trim() });
 									let obj = Object.assign([], widgetData);
+									console.log(typeof(i))
 									obj[i] = [inf, base];
 									setWidgetData(obj);
 								}}>SaveData</Button>
@@ -100,13 +101,8 @@ const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetDa
 											...item
 										}
 									})
-									//j :234,k :465;j :253,k :234
 
-									/* .map(function (inf) { return inf.split(',').map((arr) => {return arr.trim().split(':')}) }).map((arr) => {
-										return {
-											[arr[0]]: arr[1]
-										}
-									}); */
+									console.log(typeof(i))
 									console.log(arrayInfo);
 									let obj = Object.assign([], widgetData);
 									obj[i] = [arrayInfo, columns];
@@ -118,7 +114,7 @@ const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetDa
 					</MenuList>
 				</Menu>)}
 				{isEditorModeOn && <div></div>}
-				<div className={styles.title}>{widgetsArray[i]}</div>
+				<div className={styles.title}>{i + ' / ' + widgetsArray[i]}</div>
 				{isEditorModeOn && (
 					<CloseButton onClick={() => {
 						let obj = Object.assign([], widgetData);

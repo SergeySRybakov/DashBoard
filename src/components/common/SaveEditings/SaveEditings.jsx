@@ -1,17 +1,17 @@
 import React from 'react'
 import { Button } from '@chakra-ui/react'
 import axios from 'axios'
+import { dashboardService } from '../../../backend/dashboard.service'
 
-const SaveEditings = ({data}) => {
+const SaveEditings = ({ data }) => {
     return (
         <>
             <Button colorScheme='blue' size='lg' variant='solid' onClick={() => {
-                axios
-                    .post("./static/api/save.php", data)
-                    .then(function (response) {
+                dashboardService.SaveEditings(data)
+                    .then((response) => {
                         console.log(response);
                     })
-                    .catch(function (error) {
+                    .catch((error) => {
                         console.log(error);
                     })
             }}>
