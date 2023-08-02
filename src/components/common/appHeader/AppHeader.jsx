@@ -54,7 +54,7 @@ const AppHeader = ({ isEditorModeOn, layout, counter, setIsEditorModeOn, addWidg
 					setArray={setArray}
 					setWidgetData={setWidgetData}
 				/>
-				<Button onClick={() => console.log(layout)}>fiujjjjjjjjjjgsiufhgdifj</Button>
+				{/* <Button onClick={() => console.log(layout)}>fiujjjjjjjjjjgsiufhgdifj</Button> */}
 				{isEditorModeOn && (
 					<Menu>
 						<MenuButton
