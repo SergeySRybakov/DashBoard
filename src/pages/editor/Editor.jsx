@@ -2,7 +2,7 @@ import React from "react";
 import WidgetGrid from "../../components/common/widgetGrid/WidgetGrid";
 import styles from "./Editor.module.css";
 
-const Editor = ({ layout, setLayout, deleteWidget, isEditorModeOn, widgetsArray, setWidgetData, widgetData }) => {
+const Editor = ({ layout, setLayout, deleteWidget, isEditorModeOn, widgetsArray, setWidgetData, widgetData, setCounter, setArray }) => {
   let numberOfEmptyPanelsInGrid = 12;
 
   if (layout.length) {

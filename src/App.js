@@ -5,14 +5,13 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import styles from "./App.module.css";
 import AppHeader from "./components/common/appHeader/AppHeader";
 import "./App.css";
-import { dashboardService } from "./api/dashboard.service";
 
 export const App = () => {
 
 	const NUMBER_OF_COLUMNS = 6;
-	const [isEditorModeOn, setIsEditorModeOn] = useState(true);
+	const [isEditorModeOn, setIsEditorModeOn] = useState(false);
 	const [layout, setLayout] = useState([]);
-	const [isAuthorised, setIsAuthorised] = useState(true);
+	const [isAuthorised, setIsAuthorised] = useState(false);
 	const [counter, setCounter] = useState(0);
 	const [widgetsArray, setArray] = useState([]);
 	const [widgetData, setWidgetData] = useState([]);
@@ -48,22 +47,6 @@ export const App = () => {
 		/* setLayout([{ i: 0, x: 1, y: 0, w: 2, h: 2 }]); */
 		setLayout([{x: 0, y: 0, i: 0, w: 2, h: 2}])
 	};
-
-	/* const handleLoadSavingsButtonClick = () => {
-		dashboardService.loadSavings()
-			.then((response) => {
-				let info = JSON.parse(response.data['dashes']);
-				setLayout(info.layout);
-				setCounter(info.counter);
-				setArray(info.widgets);
-				setWidgetData(info.data);
-				console.log(info)
-				console.log(response)
-			})
-			.catch((error) => {
-				console.log(error);
-			})
-	} */
 
 	const deleteWidget = (i) => setLayout((currentLayout) => currentLayout.filter((widget) => widget.i !== i));
 	return (

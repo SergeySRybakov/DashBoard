@@ -11,7 +11,7 @@ else {
 
 //$pas = $_POST['password'];
 //$login = $_POST['email'];
-$pas = $_POST['password'];
+$pas = md5($_POST['password'] . 'fsd45%73n');
 $login = $_POST['email'];
 
 if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM userlist WHERE login='$login'")) == 0) {

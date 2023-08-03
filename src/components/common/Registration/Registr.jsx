@@ -25,6 +25,7 @@ const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, se
 			.catch((error) => {
 				setIsAuthorised(false);
 				setIsEditorModeOn(false);
+				alert('This username is already occupied')
 			})
 	}
 	const handleLogInButtonClick = () => {
@@ -39,6 +40,7 @@ const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, se
 			.catch(function (error) {
 				setIsAuthorised(false);
 				setIsEditorModeOn(false);
+				alert("Incorrect login or username")
 			})
 		dashboardService.loadSavings()
 			.then(function (response) {
@@ -62,7 +64,7 @@ const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, se
 				</MenuButton>
 				<MenuList>
 					<FormControl isRequired>
-						<FormLabel>Email</FormLabel>
+						<FormLabel>Username</FormLabel>
 						<Input id='EmailSignUp' borderRadius={0} placeholder='Email' type='email' />
 					</FormControl>
 					<FormControl isRequired>
@@ -80,7 +82,7 @@ const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, se
 				</MenuButton>
 				<MenuList>
 					<FormControl isRequired>
-						<FormLabel>Email</FormLabel>
+						<FormLabel>Username</FormLabel>
 						<Input id='LogInEmail' borderRadius={0} placeholder='Email' type='email' />
 					</FormControl>
 					<FormControl isRequired>

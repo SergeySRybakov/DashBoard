@@ -3,9 +3,11 @@ import RGL, { WidthProvider } from "react-grid-layout";
 import WidgetCard from "../widgetCard/WidgetCard";
 import "react-grid-layout/css/styles.css";
 
+
 const ReactGridLayout = WidthProvider(RGL);
 
-const WidgetGrid = ({ layout, setLayout, deleteWidget, isEditorModeOn, widgetsArray, setWidgetData, widgetData}) => {
+const WidgetGrid = ({ layout, setLayout, deleteWidget, isEditorModeOn, widgetsArray, setWidgetData, widgetData }) => {
+
   return (
     <ReactGridLayout
       className="layout"
