@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '@chakra-ui/react'
-import { dashboardService } from '../../../backend/dashboard.service'
+import { dashboardService } from '../../../api/dashboard.service'
 
 const SaveEditings = ({ data }) => {
     const handleSaveButtonClick = () => {

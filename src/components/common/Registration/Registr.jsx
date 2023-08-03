@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, ButtonGroup, } from '@chakra-ui/react';
 import { Input } from '@chakra-ui/react';
-import { authService } from '../../../backend/auth.service';
-import { dashboardService } from '../../../backend/dashboard.service';
+import { authService } from '../../../api/auth.service';
+import { dashboardService } from '../../../api/dashboard.service';
 import {
 	Menu,
 	MenuButton,

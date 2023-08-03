@@ -5,7 +5,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import styles from "./App.module.css";
 import AppHeader from "./components/common/appHeader/AppHeader";
 import "./App.css";
-import { dashboardService } from "./backend/dashboard.service";
+import { dashboardService } from "./api/dashboard.service";
 
 export const App = () => {
 
@@ -49,7 +49,7 @@ export const App = () => {
 		setLayout([{x: 0, y: 0, i: 0, w: 2, h: 2}])
 	};
 
-	const handleLoadSavingsButtonClick = () => {
+	/* const handleLoadSavingsButtonClick = () => {
 		dashboardService.loadSavings()
 			.then((response) => {
 				let info = JSON.parse(response.data['dashes']);
@@ -63,13 +63,13 @@ export const App = () => {
 			.catch((error) => {
 				console.log(error);
 			})
-	}
+	} */
 
 	const deleteWidget = (i) => setLayout((currentLayout) => currentLayout.filter((widget) => widget.i !== i));
 	return (
 		<ChakraProvider theme={theme}>
 
-			<div className={styles.App} onLoad={handleLoadSavingsButtonClick}>
+			<div className={styles.App}>
 				<AppHeader
 					{...{ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setArray, data, setCounter, setWidgetData }}
 				/>
