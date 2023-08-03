@@ -2,8 +2,6 @@ import { ColorModeScript } from "@chakra-ui/react";
 import * as React from "react";
 import {createRoot} from "react-dom/client";
 import { App } from "./App";
-import reportWebVitals from "./reportWebVitals";
-import * as serviceWorker from "./serviceWorker";
 
 
 
@@ -15,6 +13,3 @@ root.render(
     </>
 )
 
-serviceWorker.unregister();
-
-reportWebVitals();
