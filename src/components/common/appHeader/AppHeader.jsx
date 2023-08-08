@@ -36,9 +36,7 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 						id="editor-mode"
 						isChecked={isEditorModeOn}
 						onChange={(e) => {
-							if (isAuthorised) {
-								setIsEditorModeOn(e.target.checked);
-							}
+							if (isAuthorised) setIsEditorModeOn(e.target.checked)
 						}}
 						className={styles.editorModeSwitch}
 					/>
@@ -52,7 +50,6 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 					setArray={setArray}
 					setWidgetData={setWidgetData}
 				/>
-				{/* <Button onClick={() => console.log(layout)}>fiujjjjjjjjjjgsiufhgdifj</Button> */}
 				{isEditorModeOn && (
 					<Menu>
 						<MenuButton
