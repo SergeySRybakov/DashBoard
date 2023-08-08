@@ -112,7 +112,7 @@ const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetDa
 					</MenuList>
 				</Menu>)}
 				{isEditorModeOn && <div></div>}
-				<div className={styles.title}>{i + ' / ' + widgetsArray[i]}</div>
+				<div className={styles.title}>{widgetsArray[i]}</div>
 				{isEditorModeOn && (
 					<CloseButton onClick={() => {
 						let obj = Object.assign([], widgetData);

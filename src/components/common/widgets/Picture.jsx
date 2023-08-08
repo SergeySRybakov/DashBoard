@@ -18,12 +18,12 @@ const Picture = ({ isEditorModeOn, i, setWidgetData, widgetData }) => {
         }
     }
     return (
-        <Box style={{display:'flex', justifyContent:'center', alignItems:'center', verticalAlign:'top', textAlign:'center', marginBlock:'0', maxWidth:'100%', height:'100%', position: 'absolute' }}>
-            <img style={{display:'flex', justifyContent:'center', alignItems:'center', borderRadius:'5%', textAlign:'center', verticalAlign:'top', marginBlock:'0', maxWidth: '100%', height: '90%', position:'relative', top:'0',  }} alt='pictures' id='img' src={widgetData[i]}>
+        <Box style={{objectFit:'contain', display:'flex', justifyContent:'center', verticalAlign:'top', textAlign:'center', marginBlock:'0', maxWidth:'100%', height:'100%', position: 'absolute', top:'0' }}>
+            <img style={{objectFit:'contain', display:'flex', justifyContent:'center', textAlign:'center', verticalAlign:'top', marginBlock:'0', position:'relative', maxWidth:'100%',}} alt='pictures' id='img' src={widgetData[i]}>
 
             </img>
             {isEditorModeOn && (
-                <>
+                <div style={{position:'absolute', right:'0', bottom:'0'}}>
                     <Input placeholder="Select Date and Time" size="xs"
                         style={{  position:'relative', maxWidth: '50%', bottom: '0', left: '0' }}
                         id='fileInputBase'
@@ -31,7 +31,7 @@ const Picture = ({ isEditorModeOn, i, setWidgetData, widgetData }) => {
                     />
                     <Button style={{ position:'relative', maxWidth: '50%', margin: '3%', bottom: '0', right: '0' }} onClick={handleAddingPictureButtonClick}
                         colorScheme='blue'>Button</Button>
-                </>
+                </div>
             )}
 
         </Box>
