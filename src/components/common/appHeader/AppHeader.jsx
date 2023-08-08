@@ -15,7 +15,7 @@ import {
 import styles from "./AppHeader.module.css";
 import { AddIcon } from "@chakra-ui/icons";
 
-const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setArray, data, setCounter, setWidgetData }) => {
+const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setWidgetsArray, data, setCounter, setWidgetData }) => {
 	const allWidgetOptions = [
 		"Overview",
 		"Simple Array",
@@ -47,7 +47,7 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 				<LoadSavings
 					setLayout={setLayout}
 					setCounter={setCounter}
-					setArray={setArray}
+					setWidgetsArray={setWidgetsArray}
 					setWidgetData={setWidgetData}
 				/>
 				{isEditorModeOn && (
@@ -63,7 +63,7 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 								.map((item) => (
 									<MenuItem onClick={() => {
 										addWidget();
-										setArray(arr => [...arr, `${item}`]);
+										setWidgetsArray(arr => [...arr, `${item}`]);
 									}}>
 										{item}
 									</MenuItem>
@@ -77,7 +77,7 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 					setIsEditorModeOn={setIsEditorModeOn}
 					setIsAuthorised={setIsAuthorised}
 					setCounter={setCounter}
-					setArray={setArray}
+					setWidgetsArray={setWidgetsArray}
 					setWidgetData={setWidgetData}
 				/>
 			</nav>

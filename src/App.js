@@ -13,7 +13,7 @@ export const App = () => {
 	const [layout, setLayout] = useState([]);
 	const [isAuthorised, setIsAuthorised] = useState(false);
 	const [counter, setCounter] = useState(0);
-	const [widgetsArray, setArray] = useState([]);
+	const [widgetsArray, setWidgetsArray] = useState([]);
 	const [widgetData, setWidgetData] = useState([]);
 
 	let data = {
@@ -54,7 +54,7 @@ export const App = () => {
 
 			<div className={styles.App}>
 				<AppHeader
-					{...{ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setArray, data, setCounter, setWidgetData }}
+					{...{ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setWidgetsArray, data, setCounter, setWidgetData }}
 				/>
 				<body className={styles.body}>
 					{isEditorModeOn ? (
