@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch } from "@chakra-ui/switch";
 import Registr from '../Registration/Registr';
-import Savings from "../LoadSavings/Savings";
+import Savings from "../Savings/Savings";
 import {
 	FormControl,
 	FormLabel,
