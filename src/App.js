@@ -1,7 +1,6 @@
 import { ChakraProvider, theme } from "@chakra-ui/react";
 import React, { useState } from "react";
-import Editor from "./pages/editor/Editor";
-import Dashboard from "./pages/dashboard/Dashboard";
+import Editor from "./components/common/Editor/Editor";
 import styles from "./App.module.css";
 import AppHeader from "./components/common/appHeader/AppHeader";
 import "./App.css";
@@ -57,7 +56,6 @@ export const App = () => {
 					{...{ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setWidgetsArray, data, setCounter, setWidgetData }}
 				/>
 				<body className={styles.body}>
-					{isEditorModeOn ? (
 						<Editor
 							layout={layout}
 							setLayout={setLayout}
@@ -67,17 +65,6 @@ export const App = () => {
 							setWidgetData={setWidgetData}
 							widgetData={widgetData}
 						/>
-					) : (
-						<Dashboard
-							layout={layout}
-							setLayout={setLayout}
-							deleteWidget={deleteWidget}
-							isEditorModeOn={isEditorModeOn}
-							widgetsArray={widgetsArray}
-							setWidgetData={setWidgetData}
-							widgetData={widgetData}
-						/>
-					)}
 				</body>
 			</div>
 		</ChakraProvider>
