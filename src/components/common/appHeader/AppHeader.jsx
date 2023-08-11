@@ -1,8 +1,7 @@
 import React from "react";
 import { Switch } from "@chakra-ui/switch";
-import SaveEditings from "../SaveEditings/SaveEditings";
 import Registr from '../Registration/Registr';
-import LoadSavings from "../LoadSavings/LoadSavings";
+import Savings from "../LoadSavings/Savings";
 import {
 	FormControl,
 	FormLabel,
@@ -41,14 +40,12 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 						className={styles.editorModeSwitch}
 					/>
 				</FormControl>
-				<SaveEditings
-					data={data}
-				/>
-				<LoadSavings
+				<Savings
 					setLayout={setLayout}
 					setCounter={setCounter}
 					setWidgetsArray={setWidgetsArray}
 					setWidgetData={setWidgetData}
+					data={data}
 				/>
 				{isEditorModeOn && (
 					<Menu>
