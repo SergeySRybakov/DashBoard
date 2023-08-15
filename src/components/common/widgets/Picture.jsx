@@ -18,14 +18,14 @@ const Picture = ({ isEditorModeOn, i, setWidgetData, widgetData }) => {
         }
     }
     return (
-        <Box style={{objectFit:'contain', display:'flex', justifyContent:'center', verticalAlign:'top', textAlign:'center', marginBlock:'0', maxWidth:'100%', height:'100%', position: 'absolute', top:'0' }}>
+        <Box style={{objectFit:'contain', display:'flex', justifyContent:'center', verticalAlign:'top', textAlign:'center', marginBlock:'0', width:'100%', height:'100%', position: 'relative', top:'0' }}>
             <img style={{objectFit:'contain', display:'flex', justifyContent:'center', textAlign:'center', verticalAlign:'top', marginBlock:'0', position:'relative', maxWidth:'100%',}} alt='pictures' id='img' src={widgetData[i]}>
 
             </img>
             {isEditorModeOn && (
-                <div style={{position:'absolute', right:'0', bottom:'0'}}>
+                <div style={{position:'absolute', width:'100%', right:'0', bottom:'0', zIndex:'1'}}>
                     <Input placeholder="Select Date and Time" size="xs"
-                        style={{  position:'relative', maxWidth: '50%', bottom: '0', left: '0' }}
+                        style={{width:'100%'}}
                         id='fileInputBase'
                         type='file'
                     />

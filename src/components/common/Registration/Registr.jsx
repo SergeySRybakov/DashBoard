@@ -21,11 +21,13 @@ const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, se
 			.then((response) => {
 				setIsAuthorised(true);
 				setIsEditorModeOn(true);
+				console.log(response)
 			})
 			.catch((error) => {
 				setIsAuthorised(false);
 				setIsEditorModeOn(false);
 				alert('This username is already occupied')
+				console.log(error)
 			})
 	}
 	const handleLogInButtonClick = () => {
@@ -41,6 +43,7 @@ const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, se
 				setIsAuthorised(false);
 				setIsEditorModeOn(false);
 				alert("Incorrect login or username")
+				console.log(error)
 			})
 		dashboardService.loadSavings()
 			.then(function (response) {
