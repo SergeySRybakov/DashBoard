@@ -1,15 +1,20 @@
 import React from 'react';
 import { Textarea } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setWidgetsData } from '../../../reducers/widgetDataReducer';
 
-const Text = ({ isEditorModeOn, i, widgetData, setWidgetData }) => {
+const Text = ({ isEditorModeOn, i, widgetData}) => {
+    const dispatch = useDispatch();/* 
+    const widgetData = useSelector(state => state.widgetsData.widgetsData); */
     let textData = 'Nothing';
     const handleAddingTextButtomClick = () => {
         textData = document.getElementById(`${i}textWidget`).value;
-        console.log(textData)
         let obj = Object.assign([], widgetData);
         obj[i] = textData;
-        setWidgetData(obj);
+        dispatch(setWidgetsData(obj));
+        console.log(widgetData);
+        console.log(obj)
     }
     return (
         <>

@@ -10,10 +10,13 @@ import Chart, {
   ConstantLine,
   Label,
 } from 'devextreme-react/chart';
+import { useSelector } from 'react-redux';
 
-const Overview = ({ base, complaintsData }) => {
+const Overview = ({ i, base, complaintsData }) => {
+  let complaintsDataNew = [...complaintsData];
+  console.log(i);
 
-  const data = complaintsData.sort((a, b) => b.count - a.count);
+  const data = complaintsDataNew.sort((a, b) => b.count - a.count);
   const totalCount = data.reduce((prevValue, item) => prevValue + item.count, 0);
 
   let cumulativeCount = 0;

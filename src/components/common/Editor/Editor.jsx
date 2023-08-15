@@ -1,9 +1,12 @@
 import React from "react";
 import WidgetGrid from "../widgetGrid/WidgetGrid";
 import styles from "./Editor.module.css";
+import { useSelector } from "react-redux";
 
-const Editor = ({ layout, setLayout, deleteWidget, isEditorModeOn, widgetsArray, setWidgetData, widgetData, setCounter, setArray }) => {
+const Editor = () => {
 	let numberOfEmptyPanelsInGrid = 12;
+	const layout = useSelector(state => state.layout.layout)
+	const isEditorModeOn = useSelector(state => state.editor.isEditorModeOn);
 
 	if (layout.length) {
 		const maxWidgetYPosition = Math.max(...layout.map((widgdet) => widgdet.y));
@@ -28,14 +31,14 @@ const Editor = ({ layout, setLayout, deleteWidget, isEditorModeOn, widgetsArray,
 							</div>
 						</div>
 						<div className={styles.widgetLayout}>
-							<WidgetGrid {...{ layout, setLayout, deleteWidget, isEditorModeOn, widgetsArray, setWidgetData, widgetData }} />
+							<WidgetGrid {...{ layout}} />
 						</div>
 					</>
 				) :
 				(
 
 					<WidgetGrid
-						{...{ layout, setLayout, deleteWidget, isEditorModeOn, widgetsArray, setWidgetData, widgetData }}
+						{...{ layout }}
 					/>
 				)}
 		</>

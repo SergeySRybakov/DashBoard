@@ -1,16 +1,22 @@
 import React from 'react'
 import { Button } from '@chakra-ui/react'
-import { dashboardService } from '../../../api/dashboard.service'
+import { dashboardService } from '../../../api/dashboard.service';
+import { useDispatch, useSelector } from "react-redux";
+import { setCounter } from '../../../reducers/counterReducer';
+import { setLayout } from '../../../reducers/layoutReducer';
+import { resetWidgetsArray } from '../../../reducers/widgetsReducer';
+import { setWidgetsData } from '../../../reducers/widgetDataReducer';
 
-const LoadSavings = ({ setLayout, setCounter, setWidgetsArray, setWidgetData, data }) => {
+const LoadSavings = ({ data }) => {
+	const dispatch = useDispatch();
 	const handleLoadSavingsButtonClick = () => {
 		dashboardService.loadSavings()
 			.then((response) => {
 				let info = JSON.parse(response.data['dashes']);
-				setLayout(info.layout);
-				setCounter(info.counter);
-				setWidgetsArray(info.widgets);
-				setWidgetData(info.data);
+				dispatch(setLayout(info.layout));
+				dispatch(setCounter(info.counter));
+				dispatch(resetWidgetsArray(info.widgets));
+				dispatch(setWidgetsData(info.data));
 			})
 			.catch((error) => {
 				console.log(error);

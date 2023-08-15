@@ -13,17 +13,31 @@ import {
 } from "@chakra-ui/react";
 import styles from "./AppHeader.module.css";
 import { AddIcon } from "@chakra-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsEditorModeOn } from "../../../reducers/editorReducer";
+import { setWidgetsArray } from "../../../reducers/widgetsReducer";
+import { increment } from "../../../reducers/counterReducer";
+import { addWidgets } from "../../../reducers/layoutReducer";
 
-const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setWidgetsArray, data, setCounter, setWidgetData }) => {
+const AppHeader = ({ data }) => {
+	const dispatch = useDispatch();
+	const counter = useSelector(state => state.counter.counter);//
+	const layout = useSelector(state => state.layout.layout);
+	const isAuth = useSelector(state => state.auth.isAuth);
+	const isEditorMode = useSelector(state => state.editor.isEditorModeOn);
+
+	const addWidget = () => {
+		dispatch(addWidgets(counter));
+		dispatch(increment());
+		console.log(layout);
+	}
+
 	const allWidgetOptions = [
 		"Overview",
 		"Simple Array",
 		"Picture",
 		"Text"
 	];
-	/* const availableWidgetOptions = allWidgetOptions.filter(
-	  (option) => !layout.some((widget) => widget.i === option)
-	); */
 	return (
 		<header className={styles.header}>
 			<nav className={styles.nav}>
@@ -33,21 +47,17 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 					</FormLabel>
 					<Switch
 						id="editor-mode"
-						isChecked={isEditorModeOn}
+						isChecked={isEditorMode}
 						onChange={(e) => {
-							if (isAuthorised) setIsEditorModeOn(e.target.checked)
+							if (isAuth) dispatch(setIsEditorModeOn(e.target.checked))
 						}}
 						className={styles.editorModeSwitch}
 					/>
 				</FormControl>
 				<Savings
-					setLayout={setLayout}
-					setCounter={setCounter}
-					setWidgetsArray={setWidgetsArray}
-					setWidgetData={setWidgetData}
 					data={data}
 				/>
-				{isEditorModeOn && (
+				{isEditorMode && (
 					<Menu>
 						<MenuButton
 							as={IconButton}
@@ -60,7 +70,7 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 								.map((item) => (
 									<MenuItem onClick={() => {
 										addWidget();
-										setWidgetsArray(arr => [...arr, `${item}`]);
+										dispatch(setWidgetsArray(item));
 									}}>
 										{item}
 									</MenuItem>
@@ -69,14 +79,7 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 						</MenuList>
 					</Menu>
 				)}
-				<Registr
-					setLayout={setLayout}
-					setIsEditorModeOn={setIsEditorModeOn}
-					setIsAuthorised={setIsAuthorised}
-					setCounter={setCounter}
-					setWidgetsArray={setWidgetsArray}
-					setWidgetData={setWidgetData}
-				/>
+				<Registr />
 			</nav>
 			{/* <ColorModeSwitcher /> */}
 		</header>

@@ -1,7 +1,10 @@
 import React from 'react'
-import { Image, Box, Input, Button } from '@chakra-ui/react'
+import { Box, Input, Button } from '@chakra-ui/react';
+import { setWidgetsData } from '../../../reducers/widgetDataReducer';
+import { useDispatch } from 'react-redux';
 
-const Picture = ({ isEditorModeOn, i, setWidgetData, widgetData }) => {
+const Picture = ({ isEditorModeOn, i, widgetData }) => {
+    const dispatch = useDispatch();
     const handleAddingPictureButtonClick = () => {
         let file = document.getElementById("fileInputBase").files[0];
         let reader = new FileReader();
@@ -14,7 +17,7 @@ const Picture = ({ isEditorModeOn, i, setWidgetData, widgetData }) => {
             let obj = Object.assign([], widgetData);
             obj[i] = reader.result;
             console.log(obj)
-            setWidgetData(obj);
+            dispatch(setWidgetsData(obj));
         }
     }
     return (

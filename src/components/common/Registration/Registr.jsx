@@ -11,20 +11,28 @@ import {
 import {
 	FormControl,
 	FormLabel
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+import { useDispatch } from 'react-redux';
+import { setCounter } from '../../../reducers/counterReducer';
+import { setLayout } from '../../../reducers/layoutReducer';
+import { setIsEditorModeOn } from '../../../reducers/editorReducer';
+import { setIsAuth } from '../../../reducers/authReducer';
+import { resetWidgetsArray } from '../../../reducers/widgetsReducer';
+import { setWidgetsData } from '../../../reducers/widgetDataReducer';
 
-const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, setWidgetsArray, setWidgetData }) => {
+const Registr = () => {
+	const dispatch = useDispatch();
 	const handleSignUpButtonClick = () => {
 		const email = document.getElementById('EmailSignUp').value;
 		const password = document.getElementById('PasSignUp').value;
 		authService.signUp({email:email, password:password})
 			.then((response) => {
-				setIsAuthorised(true);
-				setIsEditorModeOn(true);
+				dispatch(setIsAuth(true));
+				dispatch(setIsEditorModeOn(true));
 			})
 			.catch((error) => {
-				setIsAuthorised(false);
-				setIsEditorModeOn(false);
+				dispatch(setIsAuth(false));
+				dispatch(setIsEditorModeOn(false));
 				alert('This username is already occupied')
 			})
 	}
@@ -33,22 +41,22 @@ const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, se
 		const password = document.getElementById('LogInPas').value;
 		authService.logIn({email:email, password:password})
 			.then(function (response) {
-				setIsAuthorised(true);
-				setIsEditorModeOn(true);
+				dispatch(setIsAuth(true));
+				dispatch(setIsEditorModeOn(true));
 				console.log(response)
 			})
 			.catch(function (error) {
-				setIsAuthorised(false);
-				setIsEditorModeOn(false);
+				dispatch(setIsAuth(false));
+				dispatch(setIsEditorModeOn(false));
 				alert("Incorrect login or username")
 			})
 		dashboardService.loadSavings()
 			.then(function (response) {
 				let info = JSON.parse(response.data['dashes']);
-				setLayout(info.layout);
-				setCounter(info.counter);
-				setWidgetsArray(info.widgets);
-				setWidgetData(info.data);
+				dispatch(setLayout(info.layout));
+				dispatch(setCounter(info.counter));
+				dispatch(resetWidgetsArray(info.widgets));
+				dispatch(setWidgetsData(info.data));
 				console.log(info)
 				console.log(response)
 			})
