@@ -11,18 +11,25 @@ import {
 import { AddIcon } from "@chakra-ui/icons";
 import Overview from "../widgets/Overview";
 import SimpleArray from "../widgets/SimpleArray";
-import Text from "../widgets/Text";
 import Picture from "../widgets/Picture";
+import Text from "../widgets/Text";
 import { Button } from "devextreme-react";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteWidget } from "../../../reducers/layoutReducer";
+import { setWidgetsData } from "../../../reducers/widgetDataReducer";
 
-const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetData, widgetData }) => {
+const WidgetCard = ({ i }) => {
+	const dispatch = useDispatch();
+	const isEditorModeOn = useSelector(state => state.editor.isEditorModeOn);
+	const widgetsArray = useSelector(state => state.widgetsArray.widgetsArray);
+	const widgetData = useSelector(state => state.widgetsData.widgetsData);
 	const displayedWidget = {
-		"Overview": <Overview base={widgetData[i] ? widgetData[i][1] : []} complaintsData={widgetData[i] ? widgetData[i][0] : []} />,
-		"Simple Array": <SimpleArray columns={widgetData[i] ? widgetData[i][1] : []} dataSource={widgetData[i] ? widgetData[i][0] : []} />,
-		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} />,
-		"Text": <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} setWidgetData={setWidgetData}/>
+		"Overview": <Overview i={i} base={widgetData[i]?.[1] ?? []} complaintsData={widgetData[i] ? widgetData[i][0] : []} />,
+		"Simple Array": <SimpleArray columns={widgetData[i]?.[1] ?? []} dataSource={widgetData[i] ? widgetData[i][0] : []} />,
+		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} />,
+		"Text": <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData}/>
 	};
-/* <Picture isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} /> */
+
 	return (
 		<div
 			className={`${styles.WidgetCard} ${isEditorModeOn && styles.WidgetCardInEditMode
@@ -62,9 +69,8 @@ const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetDa
 									});
 									let base = document.getElementById(`${i}textareaOverviewBase`).value.split(',').map((item) => { return item.trim() });
 									let obj = Object.assign([], widgetData);
-									console.log(typeof(i))
 									obj[i] = [inf, base];
-									setWidgetData(obj);
+									dispatch(setWidgetsData(obj));
 								}}>SaveData</Button>
 							</> :
 							<>
@@ -99,26 +105,22 @@ const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetDa
 											...item
 										}
 									})
-
-									console.log(typeof(i))
-									console.log(arrayInfo);
 									let obj = Object.assign([], widgetData);
 									obj[i] = [arrayInfo, columns];
-									setWidgetData(obj);
+									dispatch(setWidgetsData(obj));
 								}}>SaveData</Button>
-								<Button onClick={() => { console.log(i); console.log(widgetData[i][1]) }}>CheckData</Button>
 							</>}
 
 					</MenuList>
 				</Menu>)}
 				{isEditorModeOn && <div></div>}
-				<div className={styles.title}>{i + widgetsArray[i]}</div>
+				<div className={styles.title}>{i + ' / ' + widgetsArray[i]}</div>
 				{isEditorModeOn && (
 					<CloseButton onClick={() => {
 						let obj = Object.assign([], widgetData);
 						obj[i] = null;
-						setWidgetData(obj);
-						deleteWidget(i);
+						dispatch(setWidgetsData(obj));
+						dispatch(deleteWidget(i));
 					}} size="sm" />
 				)}
 			</header>
