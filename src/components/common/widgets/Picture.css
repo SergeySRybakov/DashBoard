@@ -1,0 +1,35 @@
+#dropzone-external {
+  background-color: rgba(183, 183, 183, 0.1);
+  border-width: 1px;
+  border-style: dashed;
+}
+
+#dropzone-external > * {
+  pointer-events: none;
+}
+
+#dropzone-external.dropzone-active {
+  border-style: none;
+}
+
+.widget-container {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#dropzone-text > span {
+  font-weight: 100;
+  opacity: 0.5;
+}
+
+#upload-progress {
+  display: flex;
+  margin-top: 10px;
+}
+
+.flex-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
