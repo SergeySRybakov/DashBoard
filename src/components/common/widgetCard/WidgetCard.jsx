@@ -11,18 +11,18 @@ import {
 import { AddIcon } from "@chakra-ui/icons";
 import Overview from "../widgets/Overview";
 import SimpleArray from "../widgets/SimpleArray";
-import Picture from "../widgets/Picture";
 import Text from "../widgets/Text";
+import Card from "../widgets/Card";
 import { Button } from "devextreme-react";
 
 const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetData, widgetData }) => {
 	const displayedWidget = {
 		"Overview": <Overview base={widgetData[i] ? widgetData[i][1] : []} complaintsData={widgetData[i] ? widgetData[i][0] : []} />,
 		"Simple Array": <SimpleArray columns={widgetData[i] ? widgetData[i][1] : []} dataSource={widgetData[i] ? widgetData[i][0] : []} />,
-		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} />,
+		"Picture": <Card isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} />,
 		"Text": <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} setWidgetData={setWidgetData}/>
 	};
-
+/* <Picture isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} /> */
 	return (
 		<div
 			className={`${styles.WidgetCard} ${isEditorModeOn && styles.WidgetCardInEditMode
@@ -112,7 +112,7 @@ const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetDa
 					</MenuList>
 				</Menu>)}
 				{isEditorModeOn && <div></div>}
-				<div className={styles.title}>{widgetsArray[i]}</div>
+				<div className={styles.title}>{i + widgetsArray[i]}</div>
 				{isEditorModeOn && (
 					<CloseButton onClick={() => {
 						let obj = Object.assign([], widgetData);
