@@ -12,14 +12,14 @@ import { AddIcon } from "@chakra-ui/icons";
 import Overview from "../widgets/Overview";
 import SimpleArray from "../widgets/SimpleArray";
 import Text from "../widgets/Text";
-import Card from "../widgets/Card";
+import Picture from "../widgets/Picture";
 import { Button } from "devextreme-react";
 
 const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetData, widgetData }) => {
 	const displayedWidget = {
 		"Overview": <Overview base={widgetData[i] ? widgetData[i][1] : []} complaintsData={widgetData[i] ? widgetData[i][0] : []} />,
 		"Simple Array": <SimpleArray columns={widgetData[i] ? widgetData[i][1] : []} dataSource={widgetData[i] ? widgetData[i][0] : []} />,
-		"Picture": <Card isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} />,
+		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} />,
 		"Text": <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} setWidgetData={setWidgetData}/>
 	};
 /* <Picture isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} /> */
