@@ -24,8 +24,8 @@ const WidgetCard = ({ i }) => {
 	const widgetsArray = useSelector(state => state.widgetsArray.widgetsArray);
 	const widgetData = useSelector(state => state.widgetsData.widgetsData);
 	const displayedWidget = {
-		"Overview": <Overview i={i} base={widgetData[i] ? widgetData[i][1] : []} complaintsData={widgetData[i] ? widgetData[i][0] : []} />,
-		"Simple Array": <SimpleArray columns={widgetData[i] ? widgetData[i][1] : []} dataSource={widgetData[i] ? widgetData[i][0] : []} />,
+		"Overview": <Overview i={i} base={widgetData[i]?.[1] ?? []} complaintsData={widgetData[i] ? widgetData[i][0] : []} />,
+		"Simple Array": <SimpleArray columns={widgetData[i]?.[1] ?? []} dataSource={widgetData[i] ? widgetData[i][0] : []} />,
 		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} />,
 		"Text": <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData}/>
 	};
@@ -109,7 +109,6 @@ const WidgetCard = ({ i }) => {
 									obj[i] = [arrayInfo, columns];
 									dispatch(setWidgetsData(obj));
 								}}>SaveData</Button>
-								<Button onClick={() => { console.log(i); console.log(widgetData[i]) }}>CheckData</Button>
 							</>}
 
 					</MenuList>

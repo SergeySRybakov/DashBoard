@@ -7,7 +7,6 @@ export const widgetSlice = createSlice({
     reducers: {
         setWidgetsArray: (state, action) => {
             state.widgetsArray = [...state.widgetsArray, action.payload];
-            console.log(state.widgetsArray)
         },
         resetWidgetsArray: (state, action) => {
             state.isEditorModeOn = action.payload;

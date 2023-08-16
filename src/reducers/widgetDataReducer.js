@@ -7,7 +7,6 @@ export const widgetDataSlice = createSlice({
     reducers: {
         setWidgetsData: (state, action) => {
             state.widgetsData = action.payload;
-            console.log(state.widgetsData)
         },
         
     },

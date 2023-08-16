@@ -23,7 +23,6 @@ export const layoutSlice = createSlice({
                         h: 2
                     },
                 ];
-                console.log(state.layout)
             } else if (action.payload === 0) {
                 state.layout = [{ x: 0, y: 0, i: 0, w: 2, h: 2 }]
             }

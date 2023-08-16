@@ -25,7 +25,7 @@ const Registr = () => {
 	const handleSignUpButtonClick = () => {
 		const email = document.getElementById('EmailSignUp').value;
 		const password = document.getElementById('PasSignUp').value;
-		authService.signUp({email:email, password:password})
+		authService.signUp({email, password})
 			.then((response) => {
 				dispatch(setIsAuth(true));
 				dispatch(setIsEditorModeOn(true));
@@ -39,7 +39,7 @@ const Registr = () => {
 	const handleLogInButtonClick = () => {
 		const email = document.getElementById('LogInEmail').value;
 		const password = document.getElementById('LogInPas').value;
-		authService.logIn({email:email, password:password})
+		authService.logIn({email, password})
 			.then(function (response) {
 				dispatch(setIsAuth(true));
 				dispatch(setIsEditorModeOn(true));
@@ -57,7 +57,6 @@ const Registr = () => {
 				dispatch(setCounter(info.counter));
 				dispatch(resetWidgetsArray(info.widgets));
 				dispatch(setWidgetsData(info.data));
-				console.log(info)
 				console.log(response)
 			})
 			.catch(function (error) {
