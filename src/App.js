@@ -8,9 +8,9 @@ import "./App.css";
 export const App = () => {
 
 	const NUMBER_OF_COLUMNS = 6;
-	const [isEditorModeOn, setIsEditorModeOn] = useState(true);
+	const [isEditorModeOn, setIsEditorModeOn] = useState(false);
 	const [layout, setLayout] = useState([]);
-	const [isAuthorised, setIsAuthorised] = useState(true);
+	const [isAuthorised, setIsAuthorised] = useState(false);
 	const [counter, setCounter] = useState(0);
 	const [widgetsArray, setWidgetsArray] = useState([]);
 	const [widgetData, setWidgetData] = useState([]);
