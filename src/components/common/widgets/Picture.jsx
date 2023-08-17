@@ -1,8 +1,12 @@
 import React from 'react';
 import './Picture.css'
 import FileUploader from 'devextreme-react/file-uploader';
+import { useDispatch, useSelector } from 'react-redux';
+import { setWidgetsData } from '../../../reducers/widgetDataReducer';
 
-const Picture = ({ isEditorModeOn, i, setWidgetData, widgetData }) => {
+const Picture = ({ isEditorModeOn, i}) => {
+    const dispatch = useDispatch();
+    const widgetData = useSelector(state => state.widgetsData.widgetsData);
     const allowedFileExtensions = ['.jpg', '.jpeg', '.gif', '.png'];
     let obj = [];
     let dropVisible = widgetData[i] ? false : true;
@@ -18,7 +22,7 @@ const Picture = ({ isEditorModeOn, i, setWidgetData, widgetData }) => {
             console.log(reader.result);
             obj = Object.assign([], widgetData);
             obj[i] = reader.result;
-            setWidgetData(obj);
+            dispatch(setWidgetsData(obj));
             console.log(widgetData[i])
         }
     }
