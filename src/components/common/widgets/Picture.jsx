@@ -26,7 +26,7 @@ const Picture = ({ isEditorModeOn, i, widgetData, setWidgetData}) => {
         <div className={`widget-container ${i + 'dropzone-external'}`} style={{objectFit:'contain', display:'flex', justifyContent:'center', verticalAlign:'top', textAlign:'center', marginBlock:'0', width:'100%', height:'100%', position: 'relative', top:'0' }}>
             <div id={`${'dropzone-external' + i}`} style={{objectFit:'contain', display:'flex', justifyContent:'center', verticalAlign:'top', textAlign:'center', marginBlock:'0', width:'100%', height:'100%', position: 'relative', top:'0' }}
              className={`flex-box ${i + 'dropzone-external'} ${isEditorModeOn ? 'dx-theme-accent-as-border-color dropzone-active' : 'dx-theme-border-color'}`}>
-                {widgetData[i] ? <img style={{maxWidth:'100%', maxHeight:'100%'}} id="dropzone-image" src={widgetData[i]} alt="" /> : <p>nothing</p>}
+                {widgetData[i] ? <img style={{maxWidth:'100%', maxHeight:'100%'}} id="dropzone-image" src={widgetData[i]} alt="" /> : <div style={{border:'dashed', padding:'1%'}}>Drop or input your file</div>}
                 {dropVisible
                     ??
                     (<div id={`dropzone-text`} className="flex-box">

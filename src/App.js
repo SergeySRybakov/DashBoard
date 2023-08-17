@@ -8,30 +8,27 @@ import "./App.css";
 export const App = () => {
 
 	const NUMBER_OF_COLUMNS = 6;
-	const [isEditorModeOn, setIsEditorModeOn] = useState(false);
+	const [isEditorModeOn, setIsEditorModeOn] = useState(true);
 	const [layout, setLayout] = useState([]);
-	const [isAuthorised, setIsAuthorised] = useState(false);
-	const [counter, setCounter] = useState(0);
+	const [isAuthorised, setIsAuthorised] = useState(true);
 	const [widgetsArray, setWidgetsArray] = useState([]);
 	const [widgetData, setWidgetData] = useState([]);
 
 	let data = {
 		'layout': layout,
 		'widgets': widgetsArray,
-		'counter': counter,
 		'data': widgetData ? widgetData : []
 	}
 
 	const addWidget = () => {
 		if (layout.length) {
 			const lastWidgetPosition = layout[layout.length - 1];
-			setCounter(counter + 1);
 			console.log(layout);
 			console.log(lastWidgetPosition)
 			return setLayout((currentLayout) => [
 				...currentLayout,
 				{
-					i: counter + 1,
+					i: +currentLayout[currentLayout.length - 1].i + 1,
 					x: lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2
 						? 0
 						: lastWidgetPosition.x + 2,
@@ -53,7 +50,7 @@ export const App = () => {
 
 			<div className={styles.App}>
 				<AppHeader
-					{...{ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setWidgetsArray, data, setCounter, setWidgetData }}
+					{...{ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setWidgetsArray, data, setWidgetData }}
 				/>
 				<body className={styles.body}>
 						<Editor

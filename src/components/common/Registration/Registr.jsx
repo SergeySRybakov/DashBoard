@@ -13,7 +13,7 @@ import {
 	FormLabel
 } from '@chakra-ui/react'
 
-const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, setWidgetsArray, setWidgetData }) => {
+const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setWidgetsArray, setWidgetData }) => {
 	const handleSignUpButtonClick = () => {
 		const email = document.getElementById('EmailSignUp').value;
 		const password = document.getElementById('PasSignUp').value;
@@ -49,7 +49,6 @@ const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setCounter, se
 			.then(function (response) {
 				let info = JSON.parse(response.data['dashes']);
 				setLayout(info.layout);
-				setCounter(info.counter);
 				setWidgetsArray(info.widgets);
 				setWidgetData(info.data);
 				console.log(info)

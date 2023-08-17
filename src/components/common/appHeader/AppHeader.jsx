@@ -14,7 +14,7 @@ import {
 import styles from "./AppHeader.module.css";
 import { AddIcon } from "@chakra-ui/icons";
 
-const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setWidgetsArray, data, setCounter, setWidgetData }) => {
+const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setWidgetsArray, data, setWidgetData }) => {
 	const allWidgetOptions = [
 		"Overview",
 		"Simple Array",
@@ -42,7 +42,6 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 				</FormControl>
 				<Savings
 					setLayout={setLayout}
-					setCounter={setCounter}
 					setWidgetsArray={setWidgetsArray}
 					setWidgetData={setWidgetData}
 					data={data}
@@ -73,7 +72,6 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 					setLayout={setLayout}
 					setIsEditorModeOn={setIsEditorModeOn}
 					setIsAuthorised={setIsAuthorised}
-					setCounter={setCounter}
 					setWidgetsArray={setWidgetsArray}
 					setWidgetData={setWidgetData}
 				/>
