@@ -17,7 +17,7 @@ import { setCounter } from '../../../reducers/counterReducer';
 import { setLayout } from '../../../reducers/layoutReducer';
 import { setIsEditorModeOn } from '../../../reducers/editorReducer';
 import { setIsAuth } from '../../../reducers/authReducer';
-import { resetWidgetsArray } from '../../../reducers/widgetsReducer';
+import { setWidgetsArray } from '../../../reducers/widgetsReducer';
 import { setWidgetsData } from '../../../reducers/widgetDataReducer';
 
 const Registr = () => {
@@ -55,7 +55,7 @@ const Registr = () => {
 				let info = JSON.parse(response.data['dashes']);
 				dispatch(setLayout(info.layout));
 				dispatch(setCounter(info.counter));
-				dispatch(resetWidgetsArray(info.widgets));
+				dispatch(setWidgetsArray(info.widgets));
 				dispatch(setWidgetsData(info.data));
 				console.log(response)
 			})

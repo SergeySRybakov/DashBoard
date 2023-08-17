@@ -4,7 +4,7 @@ import { dashboardService } from '../../../api/dashboard.service';
 import { useDispatch, useSelector } from "react-redux";
 import { setCounter } from '../../../reducers/counterReducer';
 import { setLayout } from '../../../reducers/layoutReducer';
-import { resetWidgetsArray } from '../../../reducers/widgetsReducer';
+import { setWidgetsArray } from '../../../reducers/widgetsReducer';
 import { setWidgetsData } from '../../../reducers/widgetDataReducer';
 
 const LoadSavings = ({ data }) => {
@@ -15,7 +15,7 @@ const LoadSavings = ({ data }) => {
 				let info = JSON.parse(response.data['dashes']);
 				dispatch(setLayout(info.layout));
 				dispatch(setCounter(info.counter));
-				dispatch(resetWidgetsArray(info.widgets));
+				dispatch(setWidgetsArray(info.widgets));
 				dispatch(setWidgetsData(info.data));
 			})
 			.catch((error) => {

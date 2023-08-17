@@ -5,14 +5,14 @@ export const widgetSlice = createSlice({
     name: 'widgetsArray',
     initialState,
     reducers: {
-        setWidgetsArray: (state, action) => {
+        addWidgetToArray: (state, action) => {
             state.widgetsArray = [...state.widgetsArray, action.payload];
         },
-        resetWidgetsArray: (state, action) => {
-            state.isEditorModeOn = action.payload;
+        setWidgetsArray: (state, action) => {
+            state.widgetsArray = action.payload;
         }
     },
 })
 
 export const widgetReducer = widgetSlice.reducer;
-export const { setWidgetsArray, resetWidgetsArray } = widgetSlice.actions;
+export const { setWidgetsArray, addWidgetToArray } = widgetSlice.actions;
