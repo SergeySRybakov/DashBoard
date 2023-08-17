@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect('185.26.122.81', 'host1861629', 'sXVT0Kz0ka', 'host1861629');
+$link = mysqli_connect('185.26.122.81', 'host1861629_1', 'kWRRZgnFZA', 'host1861629');
 $_POST = json_decode(file_get_contents('php://input'),true);
 session_start();
 if ($link == false){
@@ -9,8 +9,6 @@ else {
     print("Соединение установлено успешно");
 }
 
-//$pas = $_POST['password'];
-//$login = $_POST['email'];
 $pas = md5($_POST['password'] . 'fsd45%73n');
 $login = $_POST['email'];
 

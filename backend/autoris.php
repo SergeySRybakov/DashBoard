@@ -1,13 +1,6 @@
 <?php
-$link = mysqli_connect('185.26.122.81', 'host1861629', 'sXVT0Kz0ka', 'host1861629');
+$link = mysqli_connect('185.26.122.81', 'host1861629_1', 'kWRRZgnFZA', 'host1861629');
 $_POST = json_decode(file_get_contents('php://input'),true);
-
-/*if ($link == false){
-    print("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error());
-}
-else {
-    print("Соединение установлено успешно");
-}*/
 
 $pas = md5($_POST['password'] . 'fsd45%73n');
 $login = $_POST['email'];
