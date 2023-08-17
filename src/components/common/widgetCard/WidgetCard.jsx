@@ -14,19 +14,12 @@ import SimpleArray from "../widgets/SimpleArray";
 import Picture from "../widgets/Picture";
 import Text from "../widgets/Text";
 import { Button } from "devextreme-react";
-import { useSelector, useDispatch } from "react-redux";
-import { deleteWidget } from "../../../reducers/layoutReducer";
-import { setWidgetsData } from "../../../reducers/widgetDataReducer";
 
-const WidgetCard = ({ i }) => {
-	const dispatch = useDispatch();
-	const isEditorModeOn = useSelector(state => state.editor.isEditorModeOn);
-	const widgetsArray = useSelector(state => state.widgetsArray.widgetsArray);
-	const widgetData = useSelector(state => state.widgetsData.widgetsData);
+const WidgetCard = ({ deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetData, widgetData }) => {
 	const displayedWidget = {
 		"Overview": <Overview i={i} base={widgetData[i]?.[1] ?? []} complaintsData={widgetData[i] ? widgetData[i][0] : []} />,
 		"Simple Array": <SimpleArray columns={widgetData[i]?.[1] ?? []} dataSource={widgetData[i] ? widgetData[i][0] : []} />,
-		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} />,
+		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} />,
 		"Text": <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData}/>
 	};
 
@@ -70,7 +63,7 @@ const WidgetCard = ({ i }) => {
 									let base = document.getElementById(`${i}textareaOverviewBase`).value.split(',').map((item) => { return item.trim() });
 									let obj = Object.assign([], widgetData);
 									obj[i] = [inf, base];
-									dispatch(setWidgetsData(obj));
+									setWidgetData(obj);
 								}}>SaveData</Button>
 							</> :
 							<>
@@ -107,7 +100,7 @@ const WidgetCard = ({ i }) => {
 									})
 									let obj = Object.assign([], widgetData);
 									obj[i] = [arrayInfo, columns];
-									dispatch(setWidgetsData(obj));
+									setWidgetData(obj);
 								}}>SaveData</Button>
 							</>}
 
@@ -119,8 +112,8 @@ const WidgetCard = ({ i }) => {
 					<CloseButton onClick={() => {
 						let obj = Object.assign([], widgetData);
 						obj[i] = null;
-						dispatch(setWidgetsData(obj));
-						dispatch(deleteWidget(i));
+						setWidgetData(obj);
+						deleteWidget(i);
 					}} size="sm" />
 				)}
 			</header>
