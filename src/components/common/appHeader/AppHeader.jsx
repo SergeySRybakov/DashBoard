@@ -15,22 +15,15 @@ import styles from "./AppHeader.module.css";
 import { AddIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsEditorModeOn } from "../../../reducers/editorReducer";
-import { setWidgetsArray } from "../../../reducers/widgetsReducer";
-import { increment } from "../../../reducers/counterReducer";
+import { addWidgetToArray } from "../../../reducers/widgetsReducer";
 import { addWidgets } from "../../../reducers/layoutReducer";
 
 const AppHeader = ({ data }) => {
 	const dispatch = useDispatch();
-	const counter = useSelector(state => state.counter.counter);//
 	const layout = useSelector(state => state.layout.layout);
 	const isAuth = useSelector(state => state.auth.isAuth);
 	const isEditorMode = useSelector(state => state.editor.isEditorModeOn);
 
-	const addWidget = () => {
-		dispatch(addWidgets(counter));
-		dispatch(increment());
-		console.log(layout);
-	}
 
 	const allWidgetOptions = [
 		"Overview",
@@ -69,8 +62,8 @@ const AppHeader = ({ data }) => {
 							{allWidgetOptions
 								.map((item) => (
 									<MenuItem onClick={() => {
-										addWidget();
-										dispatch(setWidgetsArray(item));
+										dispatch(addWidgets());
+										dispatch(addWidgetToArray(item));
 									}}>
 										{item}
 									</MenuItem>

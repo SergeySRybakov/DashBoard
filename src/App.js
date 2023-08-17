@@ -7,7 +7,6 @@ import "./App.css";
 import { useSelector } from "react-redux";
 
 export const App = () => {
-	const counter = useSelector(state => state.counter.counter);//
 	const layout = useSelector(state => state.layout.layout);//
 	const widgetsArray = useSelector(state => state.widgetsArray.widgetsArray);//
 	const widgetData = useSelector(state => state.widgetsData.widgetsData);//
@@ -15,7 +14,6 @@ export const App = () => {
 	let data = {
 		'layout': layout,
 		'widgets': widgetsArray,
-		'counter': counter,
 		'data': widgetData ? widgetData : []
 	}
 

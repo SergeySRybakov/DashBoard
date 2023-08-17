@@ -13,7 +13,6 @@ import {
 	FormLabel
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
-import { setCounter } from '../../../reducers/counterReducer';
 import { setLayout } from '../../../reducers/layoutReducer';
 import { setIsEditorModeOn } from '../../../reducers/editorReducer';
 import { setIsAuth } from '../../../reducers/authReducer';
@@ -54,7 +53,6 @@ const Registr = () => {
 			.then(function (response) {
 				let info = JSON.parse(response.data['dashes']);
 				dispatch(setLayout(info.layout));
-				dispatch(setCounter(info.counter));
 				dispatch(setWidgetsArray(info.widgets));
 				dispatch(setWidgetsData(info.data));
 				console.log(response)

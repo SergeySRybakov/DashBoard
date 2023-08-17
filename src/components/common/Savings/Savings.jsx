@@ -2,7 +2,6 @@ import React from 'react'
 import { Button } from '@chakra-ui/react'
 import { dashboardService } from '../../../api/dashboard.service';
 import { useDispatch, useSelector } from "react-redux";
-import { setCounter } from '../../../reducers/counterReducer';
 import { setLayout } from '../../../reducers/layoutReducer';
 import { setWidgetsArray } from '../../../reducers/widgetsReducer';
 import { setWidgetsData } from '../../../reducers/widgetDataReducer';
@@ -14,7 +13,6 @@ const LoadSavings = ({ data }) => {
 			.then((response) => {
 				let info = JSON.parse(response.data['dashes']);
 				dispatch(setLayout(info.layout));
-				dispatch(setCounter(info.counter));
 				dispatch(setWidgetsArray(info.widgets));
 				dispatch(setWidgetsData(info.data));
 			})
