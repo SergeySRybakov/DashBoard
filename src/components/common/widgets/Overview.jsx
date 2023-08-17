@@ -14,7 +14,6 @@ import { useSelector } from 'react-redux';
 
 const Overview = ({ i, base, complaintsData }) => {
   let complaintsDataNew = [...complaintsData];
-  console.log(i);
 
   const data = complaintsDataNew.sort((a, b) => b.count - a.count);
   const totalCount = data.reduce((prevValue, item) => prevValue + item.count, 0);

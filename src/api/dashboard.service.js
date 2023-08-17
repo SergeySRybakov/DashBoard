@@ -1,8 +1,9 @@
 import { apiClient } from "./api-client";
 
 class DashboardService {
-    loadSavings() {
-        return apiClient.get("loadSavings.php")
+    async loadSavings() {
+        const { data } = await apiClient.get("loadSavings.php")
+        return JSON.parse(data['dashes'])
     }
     SaveEditings(data) {
         return apiClient.post("save.php", data)

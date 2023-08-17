@@ -24,6 +24,25 @@ const AppHeader = ({ data }) => {
 	const isAuth = useSelector(state => state.auth.isAuth);
 	const isEditorMode = useSelector(state => state.editor.isEditorModeOn);
 
+	const addWidget = (item) => {
+		const NUMBER_OF_COLUMNS = 6;
+		const lastWidgetPosition = layout[layout.length - 1] ?? 1;
+		dispatch(addWidgets([
+			...layout,
+			{
+				i: layout[layout.length - 1] ? (+layout[layout.length - 1].i + 1) : 0,
+				x: lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2
+					? 0
+					: lastWidgetPosition.x + 2,
+				y: lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2
+					? lastWidgetPosition.y + 2
+					: lastWidgetPosition.y + 2,
+				w: 2,
+				h: 2
+			},
+		]));
+		dispatch(addWidgetToArray(item));
+	}
 
 	const allWidgetOptions = [
 		"Overview",
@@ -61,10 +80,7 @@ const AppHeader = ({ data }) => {
 						<MenuList>
 							{allWidgetOptions
 								.map((item) => (
-									<MenuItem onClick={() => {
-										dispatch(addWidgets());
-										dispatch(addWidgetToArray(item));
-									}}>
+									<MenuItem onClick={() => addWidget(item)}>
 										{item}
 									</MenuItem>
 								))
@@ -74,7 +90,6 @@ const AppHeader = ({ data }) => {
 				)}
 				<Registr />
 			</nav>
-			{/* <ColorModeSwitcher /> */}
 		</header>
 	);
 };

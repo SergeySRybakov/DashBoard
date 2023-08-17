@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-const initialState = {isEditorModeOn: false};
+const initialState = {isEditorModeOn: true};
 
 export const editorSlice = createSlice({
     name: 'editor',

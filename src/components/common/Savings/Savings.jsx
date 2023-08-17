@@ -10,8 +10,7 @@ const LoadSavings = ({ data }) => {
 	const dispatch = useDispatch();
 	const handleLoadSavingsButtonClick = () => {
 		dashboardService.loadSavings()
-			.then((response) => {
-				let info = JSON.parse(response.data['dashes']);
+			.then((info) => {
 				dispatch(setLayout(info.layout));
 				dispatch(setWidgetsArray(info.widgets));
 				dispatch(setWidgetsData(info.data));

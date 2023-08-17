@@ -26,7 +26,7 @@ const WidgetCard = ({ i }) => {
 	const displayedWidget = {
 		"Overview": <Overview i={i} base={widgetData[i]?.[1] ?? []} complaintsData={widgetData[i] ? widgetData[i][0] : []} />,
 		"Simple Array": <SimpleArray columns={widgetData[i]?.[1] ?? []} dataSource={widgetData[i] ? widgetData[i][0] : []} />,
-		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} />,
+		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData}/>,
 		"Text": <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData}/>
 	};
 

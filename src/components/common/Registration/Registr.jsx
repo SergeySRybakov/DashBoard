@@ -50,12 +50,11 @@ const Registr = () => {
 				alert("Incorrect login or username")
 			})
 		dashboardService.loadSavings()
-			.then(function (response) {
-				let info = JSON.parse(response.data['dashes']);
+			.then(function (info) {
 				dispatch(setLayout(info.layout));
 				dispatch(setWidgetsArray(info.widgets));
 				dispatch(setWidgetsData(info.data));
-				console.log(response)
+				console.log(info)
 			})
 			.catch(function (error) {
 				console.log(error);
