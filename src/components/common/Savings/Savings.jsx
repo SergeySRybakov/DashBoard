@@ -2,12 +2,15 @@ import React from 'react'
 import { Button } from '@chakra-ui/react'
 import { dashboardService } from '../../../api/dashboard.service';
 import { useDispatch, useSelector } from "react-redux";
-import { setLayout } from '../../../reducers/layoutReducer';
-import { setWidgetsArray } from '../../../reducers/widgetsReducer';
-import { setWidgetsData } from '../../../reducers/widgetDataReducer';
+import { setLayout } from '../../../store/reducers/layoutReducer';
+import { setWidgetsArray } from '../../../store/reducers/widgetsReducer';
+import { setWidgetsData } from '../../../store/reducers/widgetDataReducer';
 
-const LoadSavings = ({ data }) => {
+const LoadSavings = () => {
 	const dispatch = useDispatch();
+	const layout = useSelector(state => state.layout.layout);
+	const widgetsArray = useSelector(state => state.widgetsArray.widgetsArray);
+	const widgetData = useSelector(state => state.widgetsData.widgetsData);
 	const handleLoadSavingsButtonClick = () => {
 		dashboardService.loadSavings()
 			.then((info) => {
@@ -20,7 +23,11 @@ const LoadSavings = ({ data }) => {
 			})
 	}
 	const handleSaveButtonClick = () => {
-        dashboardService.SaveEditings(data)
+        dashboardService.SaveEditings({
+			'layout': layout, //по идее можно было просто написать layout вместо 'layout': ..., но так выглядит красивее, как по мне
+			'widgets': widgetsArray,
+			'data': widgetData ?? []
+		})
             .then((response) => {
                 console.log(response);
             })

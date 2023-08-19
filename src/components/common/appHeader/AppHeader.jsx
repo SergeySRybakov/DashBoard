@@ -14,11 +14,11 @@ import {
 import styles from "./AppHeader.module.css";
 import { AddIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsEditorModeOn } from "../../../reducers/editorReducer";
-import { addWidgetToArray } from "../../../reducers/widgetsReducer";
-import { addWidgets } from "../../../reducers/layoutReducer";
+import { setIsEditorModeOn } from "../../../store/reducers/editorReducer";
+import { addWidgetToArray } from "../../../store/reducers/widgetsReducer";
+import { addWidgets } from "../../../store/reducers/layoutReducer";
 
-const AppHeader = ({ data }) => {
+const AppHeader = () => {
 	const dispatch = useDispatch();
 	const layout = useSelector(state => state.layout.layout);
 	const isAuth = useSelector(state => state.auth.isAuth);
@@ -66,9 +66,7 @@ const AppHeader = ({ data }) => {
 						className={styles.editorModeSwitch}
 					/>
 				</FormControl>
-				<Savings
-					data={data}
-				/>
+				<Savings />
 				{isEditorMode && (
 					<Menu>
 						<MenuButton

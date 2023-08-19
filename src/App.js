@@ -7,23 +7,13 @@ import "./App.css";
 import { useSelector } from "react-redux";
 
 export const App = () => {
-	const layout = useSelector(state => state.layout.layout);//
-	const widgetsArray = useSelector(state => state.widgetsArray.widgetsArray);//
-	const widgetData = useSelector(state => state.widgetsData.widgetsData);//
 
-	let data = {
-		'layout': layout,
-		'widgets': widgetsArray,
-		'data': widgetData ? widgetData : []
-	}
 
 	return (
 		<ChakraProvider theme={theme}>
 
 			<div className={styles.App}>
-				<AppHeader
-					{...{ data }}
-				/>
+				<AppHeader />
 				<body className={styles.body}>
 					<Editor />
 				</body>

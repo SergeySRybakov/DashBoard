@@ -2,7 +2,7 @@ import React from 'react';
 import './Picture.css'
 import FileUploader from 'devextreme-react/file-uploader';
 import { useDispatch} from 'react-redux';
-import { setWidgetsData } from '../../../reducers/widgetDataReducer';
+import { setWidgetsData } from '../../../store/reducers/widgetDataReducer';
 
 const Picture = ({ isEditorModeOn, i, widgetData}) => {
     const dispatch = useDispatch();

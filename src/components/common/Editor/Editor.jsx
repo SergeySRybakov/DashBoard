@@ -31,15 +31,12 @@ const Editor = () => {
 							</div>
 						</div>
 						<div className={styles.widgetLayout}>
-							<WidgetGrid {...{ layout}} />
+							<WidgetGrid layout={layout} />
 						</div>
 					</>
 				) :
 				(
-
-					<WidgetGrid
-						{...{ layout }}
-					/>
+					<WidgetGrid layout={layout} />
 				)}
 		</>
 	);

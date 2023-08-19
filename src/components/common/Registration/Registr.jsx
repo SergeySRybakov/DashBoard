@@ -13,11 +13,11 @@ import {
 	FormLabel
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
-import { setLayout } from '../../../reducers/layoutReducer';
-import { setIsEditorModeOn } from '../../../reducers/editorReducer';
-import { setIsAuth } from '../../../reducers/authReducer';
-import { setWidgetsArray } from '../../../reducers/widgetsReducer';
-import { setWidgetsData } from '../../../reducers/widgetDataReducer';
+import { setLayout } from '../../../store/reducers/layoutReducer';
+import { setIsEditorModeOn } from '../../../store/reducers/editorReducer';
+import { setIsAuth } from '../../../store/reducers/authReducer';
+import { setWidgetsArray } from '../../../store/reducers/widgetsReducer';
+import { setWidgetsData } from '../../../store/reducers/widgetDataReducer';
 
 const Registr = () => {
 	const dispatch = useDispatch();
