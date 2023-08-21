@@ -6,16 +6,14 @@ import AppHeader from "./components/common/appHeader/AppHeader";
 import "./App.css";
 
 export const App = () => {
-
-	return (
-		<ChakraProvider theme={theme}>
-
-			<div className={styles.App}>
-				<AppHeader />
-				<body className={styles.body}>
-					<Editor />
-				</body>
-			</div>
-		</ChakraProvider>
-	);
-}
+  return (
+    <ChakraProvider theme={theme}>
+      <div className={styles.App}>
+        <AppHeader />
+        <body className={styles.body}>
+          <Editor />
+        </body>
+      </div>
+    </ChakraProvider>
+  );
+};
