@@ -13,6 +13,7 @@
     "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
+    "parser": "babel-eslint",
     "sourceType": "module"
   },
   "settings": {
@@ -54,7 +55,7 @@
       { "blankLine": "any", "prev": "*", "next": "import" }
     ],
     "no-duplicate-imports": "error",
-    "no-trailing-spaces": "error",
+    "no-trailing-spaces": 1,
     "no-import-assign": "error",
     "no-unsafe-finally": "off",
     "no-console": [
