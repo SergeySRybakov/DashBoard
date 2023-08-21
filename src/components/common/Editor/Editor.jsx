@@ -3,7 +3,11 @@ import WidgetGrid from "../widgetGrid/WidgetGrid";
 import styles from "./Editor.module.css";
 import { useSelector } from "react-redux";
 
+<<<<<<< HEAD
 const Editor = () => {
+=======
+const Editor = ({ layout, setLayout, deleteWidget, isEditorModeOn, widgetsArray, setWidgetData, widgetData }) => {
+>>>>>>> main
 	let numberOfEmptyPanelsInGrid = 12;
 	const layout = useSelector(state => state.layout.layout)
 	const isEditorModeOn = useSelector(state => state.editor.isEditorModeOn);

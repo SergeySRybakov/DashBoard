@@ -1,11 +1,16 @@
 import React from 'react';
 import './Picture.css'
 import FileUploader from 'devextreme-react/file-uploader';
+<<<<<<< HEAD
 import { useDispatch} from 'react-redux';
 import { setWidgetsData } from '../../../store/reducers/widgetDataReducer';
 
 const Picture = ({ isEditorModeOn, i, widgetData}) => {
     const dispatch = useDispatch();
+=======
+
+const Picture = ({ isEditorModeOn, i, widgetData, setWidgetData }) => {
+>>>>>>> main
     const allowedFileExtensions = ['.jpg', '.jpeg', '.gif', '.png'];
     let obj = [];
 
@@ -18,7 +23,11 @@ const Picture = ({ isEditorModeOn, i, widgetData}) => {
         reader.onloadend = function () {
             obj = Object.assign([], widgetData);
             obj[i] = reader.result;
+<<<<<<< HEAD
             dispatch(setWidgetsData(obj));
+=======
+            setWidgetData(obj);
+>>>>>>> main
         }
     }
 
