@@ -6,7 +6,6 @@ import { setLayout } from '../../../store/reducers/layoutReducer';
 import { setWidgetsArray } from '../../../store/reducers/widgetsReducer';
 import { setWidgetsData } from '../../../store/reducers/widgetDataReducer';
 
-<<<<<<< HEAD
 const LoadSavings = () => {
 	const dispatch = useDispatch();
 	const layout = useSelector(state => state.layout.layout);
@@ -18,16 +17,6 @@ const LoadSavings = () => {
 				dispatch(setLayout(info.layout));
 				dispatch(setWidgetsArray(info.widgets));
 				dispatch(setWidgetsData(info.data));
-=======
-const LoadSavings = ({ setLayout, setWidgetsArray, setWidgetData, data }) => {
-	const handleLoadSavingsButtonClick = () => {
-		dashboardService.loadSavings()
-			.then((response) => {
-				let info = JSON.parse(response.data['dashes']);
-				setLayout(info.layout);
-				setWidgetsArray(info.widgets);
-				setWidgetData(info.data);
->>>>>>> main
 			})
 			.catch((error) => {
 				console.log(error);

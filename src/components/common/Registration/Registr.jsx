@@ -19,25 +19,15 @@ import { setIsAuth } from '../../../store/reducers/authReducer';
 import { setWidgetsArray } from '../../../store/reducers/widgetsReducer';
 import { setWidgetsData } from '../../../store/reducers/widgetDataReducer';
 
-<<<<<<< HEAD
 const Registr = () => {
 	const dispatch = useDispatch();
-=======
-const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setWidgetsArray, setWidgetData }) => {
->>>>>>> main
 	const handleSignUpButtonClick = () => {
 		const email = document.getElementById('EmailSignUp').value;
 		const password = document.getElementById('PasSignUp').value;
 		authService.signUp({email, password})
 			.then((response) => {
-<<<<<<< HEAD
 				dispatch(setIsAuth(true));
 				dispatch(setIsEditorModeOn(true));
-=======
-				setIsAuthorised(true);
-				setIsEditorModeOn(true);
-				console.log(response)
->>>>>>> main
 			})
 			.catch((error) => {
 				dispatch(setIsAuth(false));
@@ -62,18 +52,10 @@ const Registr = ({ setLayout, setIsEditorModeOn, setIsAuthorised, setWidgetsArra
 				console.log(error)
 			})
 		dashboardService.loadSavings()
-<<<<<<< HEAD
 			.then(function (info) {
 				dispatch(setLayout(info.layout));
 				dispatch(setWidgetsArray(info.widgets));
 				dispatch(setWidgetsData(info.data));
-=======
-			.then(function (response) {
-				let info = JSON.parse(response.data['dashes']);
-				setLayout(info.layout);
-				setWidgetsArray(info.widgets);
-				setWidgetData(info.data);
->>>>>>> main
 				console.log(info)
 			})
 			.catch(function (error) {

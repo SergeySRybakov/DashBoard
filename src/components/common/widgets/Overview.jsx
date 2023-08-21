@@ -10,7 +10,6 @@ import Chart, {
   ConstantLine,
   Label,
 } from 'devextreme-react/chart';
-import { useSelector } from 'react-redux';
 
 const Overview = ({ i, base, complaintsData }) => {
   let complaintsDataNew = [...complaintsData];

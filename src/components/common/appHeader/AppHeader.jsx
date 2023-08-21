@@ -44,10 +44,6 @@ const AppHeader = () => {
 		dispatch(addWidgetToArray(item));
 	}
 
-<<<<<<< HEAD
-=======
-const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, setIsAuthorised, isAuthorised, setWidgetsArray, data, setWidgetData }) => {
->>>>>>> main
 	const allWidgetOptions = [
 		"Overview",
 		"Simple Array",
@@ -70,18 +66,8 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 						className={styles.editorModeSwitch}
 					/>
 				</FormControl>
-<<<<<<< HEAD
 				<Savings />
 				{isEditorMode && (
-=======
-				<Savings
-					setLayout={setLayout}
-					setWidgetsArray={setWidgetsArray}
-					setWidgetData={setWidgetData}
-					data={data}
-				/>
-				{isEditorModeOn && (
->>>>>>> main
 					<Menu>
 						<MenuButton
 							as={IconButton}
@@ -100,17 +86,7 @@ const AppHeader = ({ isEditorModeOn, setIsEditorModeOn, addWidget, setLayout, se
 						</MenuList>
 					</Menu>
 				)}
-<<<<<<< HEAD
 				<Registr />
-=======
-				<Registr
-					setLayout={setLayout}
-					setIsEditorModeOn={setIsEditorModeOn}
-					setIsAuthorised={setIsAuthorised}
-					setWidgetsArray={setWidgetsArray}
-					setWidgetData={setWidgetData}
-				/>
->>>>>>> main
 			</nav>
 		</header>
 	);

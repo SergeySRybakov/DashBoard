@@ -23,12 +23,7 @@ const WidgetGrid = ({ layout}) => {
       {layout.map((item) => (
         <div key={item.i}>
           <WidgetCard
-<<<<<<< HEAD
             data-grid={item}
-=======
-            data-grid={item} // deleteWidget, i, isEditorModeOn, widgetsArray, setWidgetData, widgetData
-            deleteWidget={deleteWidget}
->>>>>>> main
             i={item.i}
           />
         </div>

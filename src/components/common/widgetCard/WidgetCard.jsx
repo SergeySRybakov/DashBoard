@@ -24,17 +24,10 @@ const WidgetCard = ({ i }) => {
 	const widgetsArray = useSelector(state => state.widgetsArray.widgetsArray);
 	const widgetData = useSelector(state => state.widgetsData.widgetsData);
 	const displayedWidget = {
-<<<<<<< HEAD
 		"Overview": <Overview i={i} base={widgetData[i]?.[1] ?? []} complaintsData={widgetData[i]?.[0] ?? []} />,
 		"Simple Array": <SimpleArray columns={widgetData[i]?.[1] ?? []} dataSource={widgetData[i]?.[0] ?? []} />,
 		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData}/>,
 		"Text": <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData}/>
-=======
-		"Overview": <Overview i={i} base={widgetData[i]?.[1] ?? []} complaintsData={widgetData[i] ? widgetData[i][0] : []} />,
-		"Simple Array": <SimpleArray columns={widgetData[i]?.[1] ?? []} dataSource={widgetData[i] ? widgetData[i][0] : []} />,
-		"Picture": <Picture isEditorModeOn={isEditorModeOn} i={i} setWidgetData={setWidgetData} widgetData={widgetData} />,
-		"Text": <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} setWidgetData={setWidgetData}/>
->>>>>>> main
 	};
 
 	return (
