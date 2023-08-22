@@ -8,7 +8,7 @@ export const editorSlice = createSlice({
     setIsEditorModeOn: (state, action) => {
       state.isEditorModeOn = action.payload;
     },
-    toggleEditorMode: state => {
+    toggleEditorMode: (state, action) => {
       state.isEditorModeOn = !state.isEditorModeOn;
     },
   },

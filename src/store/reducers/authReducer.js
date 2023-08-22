@@ -8,7 +8,7 @@ export const authSlice = createSlice({
     setIsAuth: (state, action) => {
       state.isAuth = action.payload;
     },
-    resetAuth: state => {
+    resetAuth: (state, action) => {
       state.isAuth = !state.isAuth;
     },
   },

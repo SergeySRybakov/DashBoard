@@ -5,12 +5,11 @@ import "react-grid-layout/css/styles.css";
 import { setLayout } from "../../../store/reducers/layoutReducer";
 import { useDispatch, useSelector } from "react-redux";
 
-
 const ReactGridLayout = WidthProvider(RGL);
 
-const WidgetGrid = ({ layout}) => {
+const WidgetGrid = ({ layout }) => {
   const dispatch = useDispatch();
-	const isEditorModeOn = useSelector(state => state.editor.isEditorModeOn);
+  const isEditorModeOn = useSelector(state => state.editor.isEditorModeOn);
   return (
     <ReactGridLayout
       className="layout"
@@ -18,14 +17,11 @@ const WidgetGrid = ({ layout}) => {
       cols={6}
       isDraggable={isEditorModeOn}
       isResizable={isEditorModeOn}
-      onLayoutChange={(layout) => dispatch(setLayout(layout))}
+      onLayoutChange={layout => dispatch(setLayout(layout))}
     >
-      {layout.map((item) => (
+      {layout.map(item => (
         <div key={item.i}>
-          <WidgetCard
-            data-grid={item}
-            i={item.i}
-          />
+          <WidgetCard data-grid={item} i={item.i} />
         </div>
       ))}
     </ReactGridLayout>

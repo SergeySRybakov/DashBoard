@@ -10,9 +10,7 @@ export const App = () => {
     <ChakraProvider theme={theme}>
       <div className={styles.App}>
         <AppHeader />
-        <body className={styles.body}>
-          <Editor />
-        </body>
+        <Editor />
       </div>
     </ChakraProvider>
   );

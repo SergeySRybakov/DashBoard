@@ -1,5 +1,5 @@
-import React from 'react'
-import './Overview.css'
+import React from "react";
+import "./Overview.css";
 import Chart, {
   ArgumentAxis,
   CommonSeriesSettings,
@@ -9,7 +9,7 @@ import Chart, {
   ValueAxis,
   ConstantLine,
   Label,
-} from 'devextreme-react/chart';
+} from "devextreme-react/chart";
 
 const Overview = ({ i, base, complaintsData }) => {
   let complaintsDataNew = [...complaintsData];
@@ -19,7 +19,7 @@ const Overview = ({ i, base, complaintsData }) => {
 
   let cumulativeCount = 0;
 
-  const dataArray = data.map((item) => {
+  const dataArray = data.map(item => {
     cumulativeCount += item.count;
     return {
       complaint: item.complaint,
@@ -45,7 +45,7 @@ const Overview = ({ i, base, complaintsData }) => {
 
   return (
     <Chart
-      title={ base[0] ? base[0] : "Pizza Shop Complaints"}
+      title={base[0] ? base[0] : "Pizza Shop Complaints"}
       dataSource={dataArray}
       palette="Harmony Light"
       id="chart"
@@ -73,38 +73,21 @@ const Overview = ({ i, base, complaintsData }) => {
       <ValueAxis
         name="frequency"
         position="left"
-        tickInterval={ base[1] ? base[1] : 300}
-      />
-      <ValueAxis
-        name="percentage"
-        position="right"
-        tickInterval={base[2] ? base[2] : 20}
+        tickInterval={base[1] ? base[1] : 300}
         showZero={true}
         valueMarginsEnabled={false}
       >
         <Label customizeText={customizePercentageText} />
-        <ConstantLine
-          value={base[3] ? base[3] : 80}
-          width={2}
-          color="#fc3535"
-          dashStyle="dash"
-        >
+        <ConstantLine value={base[3] ? base[3] : 80} width={2} color="#fc3535" dashStyle="dash">
           <Label visible={false} />
         </ConstantLine>
       </ValueAxis>
 
-      <Tooltip
-        enabled={true}
-        shared={true}
-        customizeTooltip={customizeTooltip}
-      />
+      <Tooltip enabled={true} shared={true} customizeTooltip={customizeTooltip} />
 
-      <Legend
-        verticalAlignment="top"
-        horizontalAlignment="center"
-      />
+      <Legend verticalAlignment="top" horizontalAlignment="center" />
     </Chart>
   );
-}
+};
 
-export default Overview
+export default Overview;

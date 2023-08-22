@@ -1,7 +1,7 @@
-import React from 'react';
-import { DataGrid } from 'devextreme-react/data-grid';
+import React from "react";
+import { DataGrid } from "devextreme-react/data-grid";
 
-const SimpleArray = ({columns, dataSource}) => {
+const SimpleArray = ({ columns, dataSource }) => {
   let columnsNew = [...columns];
   let dataSourceNew = [...dataSource];
   return (
@@ -10,9 +10,9 @@ const SimpleArray = ({columns, dataSource}) => {
       keyExpr="ID"
       defaultColumns={columnsNew}
       showBorders={true}
-      height={'100%'}
+      height={"100%"}
     />
-  )
-}
+  );
+};
 
-export default SimpleArray
+export default SimpleArray;
