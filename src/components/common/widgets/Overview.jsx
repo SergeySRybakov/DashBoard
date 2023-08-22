@@ -1,5 +1,6 @@
 import React from "react";
 import "./Overview.css";
+import TooltipComp from "./Tooltip";
 import Chart, {
   ArgumentAxis,
   CommonSeriesSettings,
@@ -29,14 +30,7 @@ const Overview = ({ i, base, complaintsData }) => {
   });
 
   function customizeTooltip(pointInfo) {
-    return {
-      html: `<div><div class="tooltip-header">${pointInfo.argumentText
-        }</div><div class="tooltip-body"><div class="series-name"><span class='top-series-name'>${pointInfo.points[0].seriesName
-        }</span>: </div><div class="value-text"><span class='top-series-value'>${pointInfo.points[0].valueText
-        }</span></div><div class="series-name"><span class='bottom-series-name'>${pointInfo.points[1].seriesName
-        }</span>: </div><div class="value-text"><span class='bottom-series-value'>${pointInfo.points[1].valueText
-        }</span>% </div></div></div>`,
-    };
+    return <Tooltip pointInfo={pointInfo} />;
   }
 
   function customizePercentageText({ valueText }) {
@@ -70,10 +64,12 @@ const Overview = ({ i, base, complaintsData }) => {
         <Label overlappingBehavior="stagger" />
       </ArgumentAxis>
 
+      <ValueAxis name="frequency" position="left" tickInterval={base[1] ? base[1] : 300} />
+
       <ValueAxis
-        name="frequency"
-        position="left"
-        tickInterval={base[1] ? base[1] : 300}
+        name="percentage"
+        position="right"
+        tickInterval={base[2] ? base[2] : 20}
         showZero={true}
         valueMarginsEnabled={false}
       >
