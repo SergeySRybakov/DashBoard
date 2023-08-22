@@ -1,6 +1,6 @@
 import React from "react";
 import "./Overview.css";
-import TooltipComp from "./Tooltip";
+import TooltipComp from "./supComp/Tooltip";
 import Chart, {
   ArgumentAxis,
   CommonSeriesSettings,

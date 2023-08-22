@@ -37,7 +37,7 @@
     "react/no-array-index-key": "off",
     "curly": "error",
     "indent": ["off"],
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": 0,
     "lines-between-class-members": ["error", "always"],
     "no-unused-vars": "off",
     "quotes": ["error", "double"],
@@ -48,7 +48,8 @@
         "semi": true,
         "tabWidth": 2,
         "printWidth": 100,
-        "arrowParens": "avoid"
+        "arrowParens": "avoid",
+        "endOfLine": "auto"
       }
     ],
     "sort-keys": "off",
