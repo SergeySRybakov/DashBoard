@@ -35,7 +35,7 @@ const Text = ({ isEditorModeOn, i, widgetData }) => {
         </div>
       ) : (
         <p style={{ whiteSpace: "normal", width: "100%", height: "100%", textAlign: "center" }}>
-          widgetData[i]
+          {widgetData[i]}
         </p>
       )}
     </>

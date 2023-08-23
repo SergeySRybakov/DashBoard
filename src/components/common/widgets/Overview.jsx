@@ -12,7 +12,7 @@ import Chart, {
   Label,
 } from "devextreme-react/chart";
 
-const Overview = ({ i, base, complaintsData }) => {
+const Overview = ({ base, complaintsData }) => {
   let complaintsDataNew = [...complaintsData];
 
   const data = complaintsDataNew.sort((a, b) => b.count - a.count);
@@ -30,7 +30,7 @@ const Overview = ({ i, base, complaintsData }) => {
   });
 
   function customizeTooltip(pointInfo) {
-    return <Tooltip pointInfo={pointInfo} />;
+    return <TooltipComp pointInfo={pointInfo.data} />;
   }
 
   function customizePercentageText({ valueText }) {
@@ -79,7 +79,11 @@ const Overview = ({ i, base, complaintsData }) => {
         </ConstantLine>
       </ValueAxis>
 
-      <Tooltip enabled={true} shared={true} customizeTooltip={customizeTooltip} />
+      <Tooltip
+        enabled={true}
+        shared={true}
+        contentComponent={customizeTooltip} /* customizeTooltip={customizeTooltip} */
+      />
 
       <Legend verticalAlignment="top" horizontalAlignment="center" />
     </Chart>

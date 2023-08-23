@@ -21,7 +21,7 @@ const WidgetCard = ({ i }) => {
 
   const displayedWidget = {
     Overview: (
-      <Overview i={i} base={widgetData[i]?.[1] ?? []} complaintsData={widgetData[i]?.[0] ?? []} />
+      <Overview base={widgetData[i]?.[1] ?? []} complaintsData={widgetData[i]?.[0] ?? []} />
     ),
     "Simple Array": (
       <SimpleArray columns={widgetData[i]?.[1] ?? []} dataSource={widgetData[i]?.[0] ?? []} />
@@ -40,7 +40,16 @@ const WidgetCard = ({ i }) => {
 
   return (
     <div className={`${styles.WidgetCard} ${isEditorModeOn && styles.WidgetCardInEditMode}`}>
-      <header className={`${styles.header} && ${!isEditorModeOn && styles.headerInReadOnlyMode}`}>
+      <header
+        style={{
+          display: "flex",
+          justifyContent:
+            widgetsArray[i] === "Text" || widgetsArray[i] === "Picture"
+              ? "center"
+              : "space-between",
+        }}
+        className={`${styles.header} && ${!isEditorModeOn && styles.headerInReadOnlyMode}`}
+      >
         {isEditorModeOn && widgetsArray[i] !== "Text" && widgetsArray[i] !== "Picture" && (
           <Menu>
             <MenuButton
