@@ -42,15 +42,13 @@ const WidgetCard = ({ i }) => {
     <div className={`${styles.WidgetCard} ${isEditorModeOn && styles.WidgetCardInEditMode}`}>
       <header
         style={{
+          position: "relative",
           display: "flex",
-          justifyContent:
-            widgetsArray[i] === "Text" || widgetsArray[i] === "Picture"
-              ? "center"
-              : "space-between",
+          justifyContent: !isEditorModeOn ? "center" : "space-between",
         }}
         className={`${styles.header} && ${!isEditorModeOn && styles.headerInReadOnlyMode}`}
       >
-        {isEditorModeOn && widgetsArray[i] !== "Text" && widgetsArray[i] !== "Picture" && (
+        {isEditorModeOn && widgetsArray[i] !== "Text" && widgetsArray[i] !== "Picture" ? (
           <Menu>
             <MenuButton
               as={IconButton}
@@ -67,6 +65,8 @@ const WidgetCard = ({ i }) => {
               )}
             </MenuList>
           </Menu>
+        ) : (
+          <div></div>
         )}
         <div className={styles.title}>{+i + 1 + " / " + widgetsArray[i]}</div>
         {isEditorModeOn && <CloseButton onClick={handleWidgetCloseButtonClick} size="sm" />}
