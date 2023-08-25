@@ -19,6 +19,7 @@ const LoadSavings = () => {
         dispatch(setLayout(info.layout));
         dispatch(setWidgetsArray(info.widgets));
         dispatch(setWidgetsData(info.data));
+        console.log(info);
       })
       .catch(error => {
         console.log(error);

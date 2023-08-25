@@ -1,5 +1,10 @@
 <?php
-$link = mysqli_connect('185.26.122.81', 'host1861629_1', 'kWRRZgnFZA', 'host1861629');
+require_once '../../../../../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(dirname("./"));
+$dotenv->load();
+
+$link = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 $_POST = json_decode(file_get_contents('php://input'),true);
 session_start();
 
@@ -11,3 +16,4 @@ if ($dashes != null) {
     $arr = [];
 }
 echo $arr;
+?>
