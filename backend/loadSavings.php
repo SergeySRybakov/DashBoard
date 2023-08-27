@@ -1,10 +1,7 @@
 <?php
 require_once '../../../../../vendor/autoload.php';
+require_once './client.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(dirname("./"));
-$dotenv->load();
-
-$link = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 $_POST = json_decode(file_get_contents('php://input'),true);
 session_start();
 

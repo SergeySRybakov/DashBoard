@@ -1,23 +1,20 @@
 <?php
 require_once '../../../../../vendor/autoload.php';
+require_once './client.php';
+session_start();
 
-$dotenv = Dotenv\Dotenv::createImmutable(dirname("./"));
-$dotenv->load();
-
-$link = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
-$_POST = json_decode(file_get_contents('php://input'),true);
+$_POST = json_decode(file_get_contents('php://input'), true);
 
 $pas = md5($_POST['password'] . 'fsd45%73n');
 $login = $_POST['email'];
 
 if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM userlist WHERE login='$login' AND password='$pas'")) != 0) {
-    $dashes = mysqli_query($link, "SELECT dashes FROM userlist WHERE login='$login'");
-    session_start();
+    $user_data = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM userlist WHERE login='$login'"));
+    $dashes = $user_data['dashes'];
     $_SESSION['name'] = $login;
     $_SESSION['dash'] = $dashes;
-    $_SESSION['authorised'] = true;
     $daha = json_encode($dashes);
+    echo $dashes;
 } else {
     http_response_code(401);
-    $_SESSION['authorised'] = false;
 }
