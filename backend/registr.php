@@ -5,12 +5,6 @@ require_once './client.php';
 $_POST = json_decode(file_get_contents('php://input'),true);
 
 session_start();
-if ($link == false){
-    print("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error());
-}
-else {
-    print("Соединение установлено успешно");
-}
 
 $pas = md5($_POST['password'] . 'fsd45%73n');
 $login = $_POST['email'];
