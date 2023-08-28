@@ -13,8 +13,10 @@ if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM userlist WHERE login='$lo
     $dashes = $user_data['dashes'];
     $_SESSION['name'] = $login;
     $_SESSION['dash'] = $dashes;
+    $_SESSION['authorised'] == true;
     $daha = json_encode($dashes);
     echo $dashes;
 } else {
     http_response_code(401);
+    $_SESSION['authorised'] == false;
 }

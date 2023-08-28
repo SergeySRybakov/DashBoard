@@ -13,7 +13,9 @@ if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM userlist WHERE login='$lo
 
     mysqli_query($link, "INSERT INTO userlist (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
     $_SESSION['name'] = $login;
+    $_SESSION['authorised'] == true;
 } else {
     http_response_code(401);
+    $_SESSION['authorised'] == false;
 }
 mysqli_close($link);
