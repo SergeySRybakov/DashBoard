@@ -5,9 +5,6 @@ export const layoutSlice = createSlice({
   name: "layout",
   initialState,
   reducers: {
-    addWidgets: (state, action) => {
-      state.layout = action.payload;
-    },
     setLayout: (state, action) => {
       state.layout = action.payload;
     },
@@ -19,4 +16,4 @@ export const layoutSlice = createSlice({
 });
 
 export const layoutReducer = layoutSlice.reducer;
-export const { addWidgets, setLayout, deleteWidget } = layoutSlice.actions;
+export const { setLayout, deleteWidget } = layoutSlice.actions;

@@ -20,8 +20,13 @@ const Text = ({ isEditorModeOn, i, widgetData }) => {
   return (
     <>
       {isEditorModeOn ? (
-        <div style={{ display: "flex", flexDirection: "column", width: "100%", maxHeight: "100%" }}>
-          <Textarea maxHeight={"100%"} height={"50%"} value={widgetData[i]} id={`${i}textWidget`} />
+        <div style={{ display: "flex", flexDirection: "column", width: "100%", height: "100%" }}>
+          <Textarea
+            maxHeight={"100%"}
+            height={"100%"}
+            value={widgetData[i]}
+            id={`${i}textWidget`}
+          />
           <Button
             border={"1px solid #858585"}
             borderRadius={0}

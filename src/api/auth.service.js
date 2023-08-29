@@ -2,6 +2,7 @@ import { apiClient } from "./api-client";
 
 class AuthService {
   signUp(data) {
+    console.log(data);
     return apiClient.post("registr.php", data);
   }
 

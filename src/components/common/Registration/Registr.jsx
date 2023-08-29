@@ -26,11 +26,11 @@ const Registr = () => {
     const password = document.getElementById("PasSignUp").value;
     authService
       .signUp({ email, password })
-      .then(response => {
+      .then(() => {
         dispatch(setIsAuth(true));
         dispatch(setIsEditorModeOn(true));
       })
-      .catch(error => {
+      .catch(() => {
         dispatch(setIsAuth(false));
         dispatch(setIsEditorModeOn(false));
         alert("This username is already occupied");
@@ -42,11 +42,11 @@ const Registr = () => {
     const password = document.getElementById("LogInPas").value;
     authService
       .logIn({ email, password })
-      .then(function (response) {
+      .then(function () {
         dispatch(setIsAuth(true));
         dispatch(setIsEditorModeOn(true));
       })
-      .catch(function (error) {
+      .catch(function () {
         dispatch(setIsAuth(false));
         dispatch(setIsEditorModeOn(false));
         alert("Incorrect login or username");

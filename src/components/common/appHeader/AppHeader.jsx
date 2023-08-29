@@ -10,28 +10,30 @@ import {
   Menu,
   MenuList,
   MenuItem,
+  Button,
 } from "@chakra-ui/react";
 import styles from "./AppHeader.module.css";
 import { AddIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsEditorModeOn } from "../../../store/reducers/editorReducer";
 import { addWidgetToArray } from "../../../store/reducers/widgetsReducer";
-import { addWidgets } from "../../../store/reducers/layoutReducer";
+import { setLayout } from "../../../store/reducers/layoutReducer";
 
 const AppHeader = () => {
   const dispatch = useDispatch();
   const layout = useSelector(state => state.layout.layout);
   const isAuth = useSelector(state => state.auth.isAuth);
   const isEditorMode = useSelector(state => state.editor.isEditorModeOn);
+  const widgetsArray = useSelector(state => state.widgetsArray.widgetsArray);
 
   const addWidget = item => {
     const NUMBER_OF_COLUMNS = 6;
     const lastWidgetPosition = layout[layout.length - 1] ?? 1;
     dispatch(
-      addWidgets([
+      setLayout([
         ...layout,
         {
-          i: layout[layout.length - 1] ? +layout[layout.length - 1].i + 1 : 0,
+          i: widgetsArray.length ? +widgetsArray.length : 0,
           x: lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2 ? 0 : lastWidgetPosition.x + 2,
           y:
             lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2

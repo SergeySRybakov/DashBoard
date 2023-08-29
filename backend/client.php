@@ -4,38 +4,25 @@ $dotenv->load();
 
 $link = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 
-function auth($link, $login) {
-  $GLOBALS['userdata'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM userlist WHERE login='$login'"));
-}
-
 function registr($link, $login, $pas) {
-  mysqli_query($link, "INSERT INTO userlist (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
+  mysqli_query($link, "INSERT INTO userlist1 (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
 }
 
-function loadSavings($link, $login) {
-  $GLOBALS['dashes'] = mysqli_query($link, "SELECT dashes FROM userlist WHERE login='$login'");
-}
-
-function save($link, $arr, $login) {
-  mysqli_query($link, "UPDATE userlist SET dashes='$arr' WHERE login='$login'") or die(mysqli_error($link));
+function save($link, $arr, $id) {
+  mysqli_query($link, "UPDATE userdata SET data='$arr' WHERE user_id='$id'") or die(mysqli_error($link));
 }
 
 function counter($link, $login) {
-  $count = mysqli_num_rows(mysqli_query($link, "SELECT * FROM userlist WHERE login='$login'"));
+  $count = mysqli_num_rows(mysqli_query($link, "SELECT * FROM userlist1 WHERE login='$login'"));
   return $count;
 }
 
-function insert($link, $login, $pas) {
-  mysqli_query($link, "INSERT INTO userlist (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
-}
-
 function returnData($link, $login) {
-  $user_data = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM userlist WHERE login='$login'"));
+  $user_data = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM userlist1 WHERE login='$login'"));
   return $user_data;
 }
 
-function returnDashes($link, $login) {
-  $dash = mysqli_query($link, "SELECT dashes FROM userlist WHERE login='$login'");
-  return $dash;
+function returnDash($link, $id) {
+  $user_data = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM userdata WHERE user_id='$id'"));
+  return $user_data;
 }
-

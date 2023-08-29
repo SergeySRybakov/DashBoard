@@ -21,10 +21,69 @@ const WidgetCard = ({ i }) => {
 
   const displayedWidget = {
     Overview: (
-      <Overview base={widgetData[i]?.[1] ?? []} complaintsData={widgetData[i]?.[0] ?? []} />
+      <Overview
+        base={widgetData[i]?.[1] ?? []}
+        complaintsData={
+          widgetData[i]?.[0] ?? [
+            { complaint: "Cold pizza", count: 780 },
+            { complaint: "Not enough cheese", count: 120 },
+            { complaint: "Underbaked or Overbaked", count: 52 },
+            { complaint: "Delayed delivery", count: 1123 },
+            { complaint: "Damaged pizza", count: 321 },
+            { complaint: "Incorrect billing", count: 89 },
+            { complaint: "Wrong size delivered", count: 222 },
+          ]
+        }
+      />
     ),
     "Simple Array": (
-      <SimpleArray columns={widgetData[i]?.[1] ?? []} dataSource={widgetData[i]?.[0] ?? []} />
+      <SimpleArray
+        columns={widgetData[i]?.[1] ?? ["CompanyName", "City", "State", "Phone", "Fax"]}
+        dataSource={
+          widgetData[i]?.[0] ?? [
+            {
+              ID: 1,
+              CompanyName: "Super Mart of the West",
+              City: "Bentonville",
+              State: "Arkansas",
+              Phone: "(800) 555-2797",
+              Fax: "(800) 555-2171",
+            },
+            {
+              ID: 2,
+              CompanyName: "Electronics Depot",
+              City: "Atlanta",
+              State: "Georgia",
+              Phone: "(800) 595-3232",
+              Fax: "(800) 595-3231",
+            },
+            {
+              ID: 3,
+              CompanyName: "K&S Music",
+              City: "Minneapolis",
+              State: "Minnesota",
+              Phone: "(612) 304-6073",
+              Fax: "(612) 304-6074",
+            },
+            {
+              ID: 4,
+              CompanyName: "Tom's Club",
+              City: "Issaquah",
+              State: "Washington",
+              Phone: "(800) 955-2292",
+              Fax: "(800) 955-2293",
+            },
+            {
+              ID: 5,
+              CompanyName: "E-Mart",
+              City: "Hoffman Estates",
+              State: "Illinois",
+              Phone: "(847) 286-2500",
+              Fax: "(847) 286-2501",
+            },
+          ]
+        }
+      />
     ),
     Picture: <Picture isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} />,
     Text: <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} />,

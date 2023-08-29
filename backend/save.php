@@ -10,7 +10,8 @@ session_start();
 if ($_SESSION['authorised'] == true) {
     $login = $_SESSION['name'];
     $_SESSION['dash'] = $arr;
-    save($link, $arr, $login);
+    $id = $_SESSION['user_id'];
+    save($link, $arr, $id);
 } else {
     echo 'Вы не зарегистрированы';
 }
