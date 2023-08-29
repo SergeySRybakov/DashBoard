@@ -9,7 +9,8 @@ session_start();
 
 if ($_SESSION['authorised'] == true) {
     $login = $_SESSION['name'];
-    mysqli_query($link, "UPDATE userlist SET dashes='$arr' WHERE login='$login'") or die(mysqli_error($link));
+    $_SESSION['dash'] = $arr;
+    save($link, $arr, $login);
 } else {
     echo 'Вы не зарегистрированы';
 }

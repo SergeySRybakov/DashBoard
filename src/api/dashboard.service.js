@@ -4,7 +4,7 @@ class DashboardService {
   async loadSavings() {
     const { data } = await apiClient.get("loadSavings.php");
     console.log(data);
-    return JSON.parse(data.dashes);
+    return JSON.parse(data);
   }
 
   SaveEditings(data) {

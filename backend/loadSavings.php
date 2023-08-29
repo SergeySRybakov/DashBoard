@@ -6,11 +6,10 @@ $_POST = json_decode(file_get_contents('php://input'),true);
 session_start();
 
 $login = $_SESSION['name'];
-$dashes = mysqli_query($link, "SELECT dashes FROM userlist WHERE login='$login'");
+$dashes = $_SESSION['dash'];
 if ($dashes != null) {
-    $arr = json_encode(mysqli_fetch_object($dashes));
+    echo json_encode($dashes);
 } else {
-    $arr = [];
+    echo [];
 }
-echo $arr;
 ?>

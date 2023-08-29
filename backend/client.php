@@ -12,7 +12,7 @@ function registr($link, $login, $pas) {
   mysqli_query($link, "INSERT INTO userlist (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
 }
 
-function loadSWavings($link, $login) {
+function loadSavings($link, $login) {
   $GLOBALS['dashes'] = mysqli_query($link, "SELECT dashes FROM userlist WHERE login='$login'");
 }
 
@@ -38,3 +38,4 @@ function returnDashes($link, $login) {
   $dash = mysqli_query($link, "SELECT dashes FROM userlist WHERE login='$login'");
   return $dash;
 }
+
