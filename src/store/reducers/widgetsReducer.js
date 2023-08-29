@@ -6,15 +6,18 @@ export const widgetSlice = createSlice({
   initialState,
   reducers: {
     addWidgetToArray: (state, action) => {
-      console.log(state.widgetsArray);
       state.widgetsArray = [...state.widgetsArray, action.payload];
-      console.log(state.widgetsArray);
     },
     setWidgetsArray: (state, action) => {
       state.widgetsArray = action.payload;
+    },
+    deleteWidgetFromArray: (state, action) => {
+      const i = action.payload;
+      state.widgetsArray[i] = null;
+      console.log(state.widgetsArray);
     },
   },
 });
 
 export const widgetReducer = widgetSlice.reducer;
-export const { setWidgetsArray, addWidgetToArray } = widgetSlice.actions;
+export const { setWidgetsArray, addWidgetToArray, deleteWidgetFromArray } = widgetSlice.actions;
