@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch } from "@chakra-ui/switch";
-import Registr from "../Registration/Registr";
+import Registr from "../Registration/Register";
 import Savings from "../Savings/Savings";
 import {
   FormControl,

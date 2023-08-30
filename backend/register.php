@@ -1,21 +1,18 @@
 <?php
 require_once '../../../../../vendor/autoload.php';
 require_once './client.php';
-session_start();
 
 $request_body = json_decode(file_get_contents('php://input'), true);
+
+session_start();
 
 $pas = md5($request_body['password'] . 'fsd45%73n');
 $login = $request_body['email'];
 
-if (hasUserWithCredentials($db_connection, $login)) {
-  $id = getUserData($db_connection, $login)['id'];
-  $user_data = getDashboard($db_connection, $id);
-  $dashes = $user_data['dashes'];
-  $_SESSION['authorised'] = true;
+if (!hasUserWithCredentials($db_connection, $login) == 0) {
+  registr($db_connection, $login, $pas);
   $_SESSION['name'] = $login;
-  $_SESSION['dash'] = $dashes;
-  $_SESSION['user_id'] = $id;
+  $_SESSION['authorised'] = true;
 } else {
   http_response_code(401);
   $_SESSION['authorised'] = false;
