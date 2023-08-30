@@ -1,6 +1,13 @@
 <?php
 
+<<<<<<< HEAD
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
+=======
+<<<<<<< HEAD:backend/client.php
+$db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
+=======
+require_once __DIR__ . '/loadenv.php';
+>>>>>>> e2d4835 (linux docker-compose with proxy done)
 
 $DB_HOST = getenv("DB_HOST");
 $DB_USER = getenv("DB_USER");
@@ -13,11 +20,18 @@ $link = mysqli_connect(
   $DB_PASS,
   $DB_NAME,
 );
+<<<<<<< HEAD
 
 function registr($link, $login, $pas) {
   mysqli_query($link, "INSERT INTO userpwlg (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
   $id = mysqli_insert_id($link);
   mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
+=======
+>>>>>>> b4e7359 (linux docker-compose with proxy done):backend/helpers/client.php
+
+function registr($db_connection, $login, $pas) {
+  mysqli_query($db_connection, "INSERT INTO userlist1 (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($db_connection));
+>>>>>>> e2d4835 (linux docker-compose with proxy done)
 }
 
 function save($db_connection, $arr, $id) {
