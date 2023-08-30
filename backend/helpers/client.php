@@ -3,12 +3,15 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
 =======
 >>>>>>> 93b1fc3 (remake backend)
 =======
 >>>>>>> ae06b0a (linux docker-compose with proxy done)
+=======
+>>>>>>> 47ded23 (remake backend)
 <<<<<<< HEAD:backend/client.php
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
@@ -51,6 +54,7 @@ function registr($link, $login, $pas) {
   $id = mysqli_insert_id($link);
   mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
 >>>>>>> 4229b31 (create 2 tables sql)
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> c5fdc64 (create 2 tables sql)
 =======
@@ -99,6 +103,14 @@ function registr($link, $login, $pas) {
   mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
 >>>>>>> 4229b31 (create 2 tables sql)
 >>>>>>> 386e9d0 (create 2 tables sql)
+=======
+=======
+$db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
+
+function registr($db_connection, $login, $pas) {
+  mysqli_query($db_connection, "INSERT INTO userlist1 (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($db_connection));
+>>>>>>> 8dab0c8 (remake backend)
+>>>>>>> 47ded23 (remake backend)
 }
 
 function save($db_connection, $arr, $id) {
@@ -109,12 +121,17 @@ function save($db_connection, $arr, $id) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 8dab0c8 (remake backend)
 =======
 >>>>>>> ae06b0a (linux docker-compose with proxy done)
 =======
 >>>>>>> 386e9d0 (create 2 tables sql)
+=======
+=======
+>>>>>>> 8dab0c8 (remake backend)
+>>>>>>> 47ded23 (remake backend)
 function hasUserWithCredentials($db_connection, $login) {
   $count = mysqli_num_rows(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
   if ($count == 0) {
@@ -124,8 +141,11 @@ function hasUserWithCredentials($db_connection, $login) {
   }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> ae06b0a (linux docker-compose with proxy done)
+=======
+>>>>>>> 47ded23 (remake backend)
 }
 
 function getUserData($db_connection, $login) {
@@ -144,16 +164,22 @@ function returnData($link, $login) {
   $user_data = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM userpwlg WHERE login='$login'"));
 >>>>>>> 4229b31 (create 2 tables sql)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 47ded23 (remake backend)
 =======
 }
 
 function getUserData($db_connection, $login) {
   $user_data = mysqli_fetch_assoc(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
 >>>>>>> 8dab0c8 (remake backend)
+<<<<<<< HEAD
 =======
 >>>>>>> ae06b0a (linux docker-compose with proxy done)
 =======
 >>>>>>> 386e9d0 (create 2 tables sql)
+=======
+>>>>>>> 47ded23 (remake backend)
   return $user_data;
 }
 
