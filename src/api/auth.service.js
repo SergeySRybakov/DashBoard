@@ -8,7 +8,7 @@ class AuthService {
 
   logIn(data) {
     console.log(data);
-    return apiClient.post("autoris.php", data);
+    return apiClient.post("auth.php", data);
   }
 }
 
