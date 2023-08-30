@@ -6,6 +6,7 @@ session_start();
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 $request_body = json_decode(file_get_contents('php://input'), true);
 
 $pas = md5($request_body['password'] . 'fsd45%73n');
@@ -27,10 +28,14 @@ $login = $request_body['email'];
 <<<<<<< HEAD
 =======
 $_POST = json_decode(file_get_contents('php://input'), true);
+=======
+$request_body = json_decode(file_get_contents('php://input'), true);
+>>>>>>> 6e1275d (remake backend)
 
-$pas = md5($_POST['password'] . 'fsd45%73n');
-$login = $_POST['email'];
+$pas = md5($request_body['password'] . 'fsd45%73n');
+$login = $request_body['email'];
 
+<<<<<<< HEAD
 >>>>>>> 5f881b1 (add deletewidgetfromarray function)
 if (counter($link, $login) != 0) {
   $id = returnData($link, $login)['id'];
@@ -39,6 +44,8 @@ if (counter($link, $login) != 0) {
 <<<<<<< HEAD
 >>>>>>> b6ba537 (merge docker-compose)
 =======
+=======
+>>>>>>> 6e1275d (remake backend)
 if (hasUserWithCredentials($db_connection, $login)) {
   $id = getUserData($db_connection, $login)['id'];
   $user_data = getDashboard($db_connection, $id);
