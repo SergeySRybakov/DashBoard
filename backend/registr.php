@@ -1,6 +1,5 @@
 <?php
-require_once '../../../../../vendor/autoload.php';
-require_once './client.php';
+require_once './helpers/client.php';
 
 $_POST = json_decode(file_get_contents('php://input'), true);
 
