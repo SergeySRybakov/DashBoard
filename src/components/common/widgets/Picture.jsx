@@ -66,7 +66,23 @@ const Picture = ({ isEditorModeOn, i, widgetData }) => {
             alt=""
           />
         ) : (
-          <div id="drpZone" style={{ border: "dashed", padding: "1%" }}>
+          <div
+            id="drpZone"
+            style={{
+              border: "dashed",
+              padding: "1%",
+              objectFit: "contain",
+              display: "flex",
+              justifyContent: "center",
+              verticalAlign: "top",
+              textAlign: "center",
+              marginBlock: "0",
+              width: "100%",
+              maxHeight: "95%",
+              top: "0",
+              fontSize: "2vw",
+            }}
+          >
             Drop or input your file
           </div>
         )}

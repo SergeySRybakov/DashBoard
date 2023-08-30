@@ -24,7 +24,7 @@ const Text = ({ isEditorModeOn, i, widgetData }) => {
           <Textarea
             maxHeight={"100%"}
             height={"100%"}
-            value={widgetData[i]}
+            placeholder={widgetData[i]}
             id={`${i}textWidget`}
           />
           <Button
@@ -39,7 +39,15 @@ const Text = ({ isEditorModeOn, i, widgetData }) => {
           </Button>
         </div>
       ) : (
-        <p style={{ whiteSpace: "normal", width: "100%", height: "100%", textAlign: "center" }}>
+        <p
+          style={{
+            whiteSpace: "normal",
+            width: "100%",
+            overflow: "auto",
+            height: "100%",
+            textAlign: "center",
+          }}
+        >
           {widgetData[i]}
         </p>
       )}
