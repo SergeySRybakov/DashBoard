@@ -5,6 +5,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
 =======
@@ -15,6 +16,8 @@ $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_
 >>>>>>> 47ded23 (remake backend)
 =======
 >>>>>>> adf72c2 (linux docker-compose with proxy done)
+=======
+>>>>>>> 0612a58 (remake backend)
 <<<<<<< HEAD:backend/client.php
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
@@ -64,8 +67,12 @@ function registr($link, $login, $pas) {
 =======
 =======
 >>>>>>> fcac418 (linux docker-compose with proxy done)
+=======
+>>>>>>> 3c05afc (remake backend)
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
+=======
+>>>>>>> 93b1fc3 (remake backend)
 <<<<<<< HEAD:backend/client.php
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
@@ -170,15 +177,31 @@ function registr($link, $login, $pas) {
   $id = mysqli_insert_id($link);
   mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
 >>>>>>> 4229b31 (create 2 tables sql)
+<<<<<<< HEAD
 >>>>>>> c5fdc64 (create 2 tables sql)
+<<<<<<< HEAD
 >>>>>>> f1c7a1d (create 2 tables sql)
+<<<<<<< HEAD
 >>>>>>> 22821e6 (create 2 tables sql)
+=======
+=======
+=======
+=======
+$db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
+
+function registr($db_connection, $login, $pas) {
+  mysqli_query($db_connection, "INSERT INTO userlist1 (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($db_connection));
+>>>>>>> 8dab0c8 (remake backend)
+>>>>>>> 93b1fc3 (remake backend)
+>>>>>>> 3c05afc (remake backend)
+>>>>>>> 0612a58 (remake backend)
 }
 
 function save($db_connection, $arr, $id) {
   mysqli_query($db_connection, "UPDATE userdata SET data='$arr' WHERE user_id='$id'") or die(mysqli_error($db_connection));
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -197,10 +220,19 @@ function save($db_connection, $arr, $id) {
 >>>>>>> 47ded23 (remake backend)
 =======
 =======
+>>>>>>> 0612a58 (remake backend)
+=======
 >>>>>>> 8dab0c8 (remake backend)
 =======
 >>>>>>> f1c7a1d (create 2 tables sql)
+<<<<<<< HEAD
 >>>>>>> 22821e6 (create 2 tables sql)
+=======
+=======
+=======
+>>>>>>> 8dab0c8 (remake backend)
+>>>>>>> 3c05afc (remake backend)
+>>>>>>> 0612a58 (remake backend)
 function hasUserWithCredentials($db_connection, $login) {
   $count = mysqli_num_rows(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
   if ($count == 0) {
@@ -235,16 +267,22 @@ function returnData($link, $login) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 47ded23 (remake backend)
 =======
 >>>>>>> 22821e6 (create 2 tables sql)
+=======
+=======
+>>>>>>> 3c05afc (remake backend)
+>>>>>>> 0612a58 (remake backend)
 =======
 }
 
 function getUserData($db_connection, $login) {
   $user_data = mysqli_fetch_assoc(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
 >>>>>>> 8dab0c8 (remake backend)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -257,6 +295,12 @@ function getUserData($db_connection, $login) {
 =======
 >>>>>>> f1c7a1d (create 2 tables sql)
 >>>>>>> 22821e6 (create 2 tables sql)
+=======
+=======
+>>>>>>> f1c7a1d (create 2 tables sql)
+=======
+>>>>>>> 3c05afc (remake backend)
+>>>>>>> 0612a58 (remake backend)
   return $user_data;
 }
 
