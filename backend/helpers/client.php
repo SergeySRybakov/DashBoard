@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
 =======
@@ -12,6 +13,8 @@ $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_
 >>>>>>> ae06b0a (linux docker-compose with proxy done)
 =======
 >>>>>>> 47ded23 (remake backend)
+=======
+>>>>>>> adf72c2 (linux docker-compose with proxy done)
 <<<<<<< HEAD:backend/client.php
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
@@ -59,7 +62,15 @@ function registr($link, $login, $pas) {
 >>>>>>> c5fdc64 (create 2 tables sql)
 =======
 =======
+=======
+>>>>>>> fcac418 (linux docker-compose with proxy done)
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
+=======
+<<<<<<< HEAD:backend/client.php
+$db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
+=======
+require_once __DIR__ . '/loadenv.php';
+>>>>>>> e2d4835 (linux docker-compose with proxy done)
 
 <<<<<<< HEAD
 function registr($db_connection, $login, $pas) {
@@ -80,12 +91,15 @@ $link = mysqli_connect(
   $DB_PASS,
   $DB_NAME,
 );
+<<<<<<< HEAD
 
 function registr($link, $login, $pas) {
   mysqli_query($link, "INSERT INTO userpwlg (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
   $id = mysqli_insert_id($link);
   mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
+<<<<<<< HEAD
 >>>>>>> ab38985 (merge docker-compose)
+<<<<<<< HEAD
 >>>>>>> a8936cf (merge docker-compose)
 =======
 >>>>>>> b4e7359 (linux docker-compose with proxy done):backend/helpers/client.php
@@ -133,6 +147,16 @@ function registr($link, $login, $pas) {
   mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
 >>>>>>> ab38985 (merge docker-compose)
 >>>>>>> 2684ffa (merge docker-compose)
+=======
+=======
+=======
+>>>>>>> b4e7359 (linux docker-compose with proxy done):backend/helpers/client.php
+
+function registr($db_connection, $login, $pas) {
+  mysqli_query($db_connection, "INSERT INTO userlist1 (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($db_connection));
+>>>>>>> e2d4835 (linux docker-compose with proxy done)
+>>>>>>> fcac418 (linux docker-compose with proxy done)
+>>>>>>> adf72c2 (linux docker-compose with proxy done)
 }
 
 function save($db_connection, $arr, $id) {
