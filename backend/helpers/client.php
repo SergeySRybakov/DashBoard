@@ -2,15 +2,21 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
 =======
 >>>>>>> 93b1fc3 (remake backend)
+=======
+>>>>>>> ae06b0a (linux docker-compose with proxy done)
 <<<<<<< HEAD:backend/client.php
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
 require_once __DIR__ . '/loadenv.php';
+<<<<<<< HEAD
 >>>>>>> e2d4835 (linux docker-compose with proxy done)
+=======
+>>>>>>> ae06b0a (linux docker-compose with proxy done)
 
 $DB_HOST = getenv("DB_HOST");
 $DB_USER = getenv("DB_USER");
@@ -23,6 +29,7 @@ $link = mysqli_connect(
   $DB_PASS,
   $DB_NAME,
 );
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 function registr($link, $login, $pas) {
@@ -76,6 +83,12 @@ function registr($link, $login, $pas) {
   mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
 >>>>>>> ab38985 (merge docker-compose)
 >>>>>>> a8936cf (merge docker-compose)
+=======
+>>>>>>> b4e7359 (linux docker-compose with proxy done):backend/helpers/client.php
+
+function registr($db_connection, $login, $pas) {
+  mysqli_query($db_connection, "INSERT INTO userlist1 (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($db_connection));
+>>>>>>> ae06b0a (linux docker-compose with proxy done)
 }
 
 function save($db_connection, $arr, $id) {
@@ -84,8 +97,11 @@ function save($db_connection, $arr, $id) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 8dab0c8 (remake backend)
+=======
+>>>>>>> ae06b0a (linux docker-compose with proxy done)
 function hasUserWithCredentials($db_connection, $login) {
   $count = mysqli_num_rows(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
   if ($count == 0) {
@@ -94,10 +110,14 @@ function hasUserWithCredentials($db_connection, $login) {
     return true;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ae06b0a (linux docker-compose with proxy done)
 }
 
 function getUserData($db_connection, $login) {
   $user_data = mysqli_fetch_assoc(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
+<<<<<<< HEAD
 =======
 function counter($link, $login) {
   $count = mysqli_num_rows(mysqli_query($link, "SELECT * FROM userpwlg WHERE login='$login'"));
@@ -113,6 +133,8 @@ function returnData($link, $login) {
 function getUserData($db_connection, $login) {
   $user_data = mysqli_fetch_assoc(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
 >>>>>>> 8dab0c8 (remake backend)
+=======
+>>>>>>> ae06b0a (linux docker-compose with proxy done)
   return $user_data;
 }
 
