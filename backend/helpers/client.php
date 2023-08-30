@@ -1,8 +1,11 @@
 <?php
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
+=======
+>>>>>>> 93b1fc3 (remake backend)
 <<<<<<< HEAD:backend/client.php
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 =======
@@ -41,7 +44,16 @@ function registr($link, $login, $pas) {
   $id = mysqli_insert_id($link);
   mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
 >>>>>>> 4229b31 (create 2 tables sql)
+<<<<<<< HEAD
 >>>>>>> c5fdc64 (create 2 tables sql)
+=======
+=======
+$db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
+
+function registr($db_connection, $login, $pas) {
+  mysqli_query($db_connection, "INSERT INTO userlist1 (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($db_connection));
+>>>>>>> 8dab0c8 (remake backend)
+>>>>>>> 93b1fc3 (remake backend)
 }
 
 function save($db_connection, $arr, $id) {
@@ -49,6 +61,9 @@ function save($db_connection, $arr, $id) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8dab0c8 (remake backend)
 function hasUserWithCredentials($db_connection, $login) {
   $count = mysqli_num_rows(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
   if ($count == 0) {
@@ -56,6 +71,7 @@ function hasUserWithCredentials($db_connection, $login) {
   } else {
     return true;
   }
+<<<<<<< HEAD
 }
 
 function getUserData($db_connection, $login) {
@@ -69,6 +85,12 @@ function counter($link, $login) {
 function returnData($link, $login) {
   $user_data = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM userpwlg WHERE login='$login'"));
 >>>>>>> 4229b31 (create 2 tables sql)
+=======
+}
+
+function getUserData($db_connection, $login) {
+  $user_data = mysqli_fetch_assoc(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
+>>>>>>> 8dab0c8 (remake backend)
   return $user_data;
 }
 
