@@ -7,7 +7,7 @@ const Text = ({ isEditorModeOn, i, widgetData }) => {
   const dispatch = useDispatch();
   let textData = "Nothing";
 
-  const handleAddingTextButtomClick = () => {
+  const handleAddingTextButtonClick = () => {
     textData = document.getElementById(`${i}textWidget`).value;
     let obj = Object.assign([], widgetData);
     obj[i] = textData;
@@ -15,28 +15,19 @@ const Text = ({ isEditorModeOn, i, widgetData }) => {
   };
 
   const loadText = () => {
-    document.getElementById(`${i}textWidget`).value = widgetData[i];
+    return widgetData[i];
   };
   return (
     <>
       {isEditorModeOn ? (
-        <div style={{ display: "flex", flexDirection: "column", width: "100%", height: "100%" }}>
+        <div style={{ display: "flex", flexDirection: "column", width: "100%", height: "95%" }}>
           <Textarea
             maxHeight={"100%"}
-            height={"100%"}
+            height={"95%"}
             placeholder={widgetData[i]}
             id={`${i}textWidget`}
+            onChange={handleAddingTextButtonClick}
           />
-          <Button
-            border={"1px solid #858585"}
-            borderRadius={0}
-            onClick={handleAddingTextButtomClick}
-          >
-            SaveText
-          </Button>
-          <Button border={"1px solid #858585"} borderRadius={0} onClick={loadText}>
-            LoadText
-          </Button>
         </div>
       ) : (
         <p
