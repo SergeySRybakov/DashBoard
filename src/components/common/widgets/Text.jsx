@@ -14,9 +14,6 @@ const Text = ({ isEditorModeOn, i, widgetData }) => {
     dispatch(setWidgetsData(obj));
   };
 
-  const loadText = () => {
-    return widgetData[i];
-  };
   return (
     <>
       {isEditorModeOn ? (
@@ -24,9 +21,11 @@ const Text = ({ isEditorModeOn, i, widgetData }) => {
           <Textarea
             maxHeight={"100%"}
             height={"95%"}
-            placeholder={widgetData[i]}
+            placeholder={widgetData[i] ?? "your text"}
+            borderRadius={"0"}
             id={`${i}textWidget`}
             onChange={handleAddingTextButtonClick}
+            _active={"border: 1px solid black"}
           />
         </div>
       ) : (

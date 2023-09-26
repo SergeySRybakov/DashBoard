@@ -2,6 +2,7 @@ import React from "react";
 import WidgetGrid from "../widgetGrid/WidgetGrid";
 import styles from "./Editor.module.css";
 import { useSelector } from "react-redux";
+import _ from "lodash";
 
 const Editor = () => {
   let numberOfEmptyPanelsInGrid = 12;

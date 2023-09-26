@@ -6,7 +6,6 @@ import Overview from "../widgets/Overview";
 import SimpleArray from "../widgets/SimpleArray";
 import Picture from "../widgets/Picture";
 import Text from "../widgets/Text";
-import { Button } from "devextreme-react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteWidget } from "../../../store/reducers/layoutReducer";
 import { setWidgetsData } from "../../../store/reducers/widgetDataReducer";

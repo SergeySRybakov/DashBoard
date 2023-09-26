@@ -70,7 +70,7 @@ const Picture = ({ isEditorModeOn, i, widgetData }) => {
             id="drpZone"
             style={{
               border: "dashed",
-              padding: "1%",
+              padding: "3%",
               objectFit: "contain",
               display: "flex",
               justifyContent: "center",

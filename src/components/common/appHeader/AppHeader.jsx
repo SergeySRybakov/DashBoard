@@ -28,30 +28,43 @@ const AppHeader = () => {
 
   const addWidget = item => {
     const NUMBER_OF_COLUMNS = 6;
-    const lastWidgetPosition = layout[layout.length - 1] ?? 1;
+
+    const lastWidgetPosition = layout[layout.length - 1]
+      ? layout[layout.length - 1]
+      : { x: 2, y: 2 };
+    console.log(layout);
     dispatch(
       setLayout([
         ...layout,
         {
-          i: widgetsArray.length ? +widgetsArray.length : 0,
-          x: lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2 ? 0 : lastWidgetPosition.x + 2,
-          y:
-            lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2
-              ? lastWidgetPosition.y + 2
-              : lastWidgetPosition.y + 2,
           w: 2,
           h: 2,
+          i: widgetsArray.length ? +widgetsArray.length : 0,
+          x: +lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2 ? 1 : +lastWidgetPosition.x,
+          y:
+            +lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2
+              ? +lastWidgetPosition.y + 2
+              : +lastWidgetPosition.y + 2,
         },
       ]),
     );
     dispatch(addWidgetToArray(item));
+    console.log(layout);
   };
 
   const allWidgetOptions = ["Overview", "Simple Array", "Picture", "Text"];
   return (
-    <header className={styles.header}>
+    <header
+      className={styles.header}
+      style={{
+        border: "1px solid rgb(224 217 217)",
+        borderBottomRightRadius: "10px",
+        width: "auto",
+        height: "60px",
+      }}
+    >
       <nav className={styles.nav}>
-        <FormControl display="flex" alignItems="center">
+        <FormControl display="flex" alignItems="center" width="auto">
           <FormLabel htmlFor="editor-mode" mb="0">
             Editor Mode
           </FormLabel>
