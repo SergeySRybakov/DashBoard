@@ -7,10 +7,8 @@ $arr = json_encode($_POST);
 session_start();
 
 if ($_SESSION['authorised'] == true) {
-    $login = $_SESSION['name'];
     $_SESSION['dash'] = $arr;
-    $id = $_SESSION['user_id'];
-    save($link, $arr, $id);
+    save($link, $arr, $_SESSION['user_id']);
 } else {
     echo 'Вы не зарегистрированы';
 }

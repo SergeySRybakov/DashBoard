@@ -15,7 +15,9 @@ $link = mysqli_connect(
 );
 
 function registr($link, $login, $pas) {
-  mysqli_query($link, "INSERT INTO userlist1 (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
+  mysqli_query($link, "INSERT INTO userpwlg (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
+  $id = mysqli_insert_id($link);
+  mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
 }
 
 function save($link, $arr, $id) {
@@ -23,12 +25,12 @@ function save($link, $arr, $id) {
 }
 
 function counter($link, $login) {
-  $count = mysqli_num_rows(mysqli_query($link, "SELECT * FROM userlist1 WHERE login='$login'"));
+  $count = mysqli_num_rows(mysqli_query($link, "SELECT * FROM userpwlg WHERE login='$login'"));
   return $count;
 }
 
 function returnData($link, $login) {
-  $user_data = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM userlist1 WHERE login='$login'"));
+  $user_data = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM userpwlg WHERE login='$login'"));
   return $user_data;
 }
 
