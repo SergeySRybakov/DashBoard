@@ -29,15 +29,26 @@ function registr($link, $login, $pas) {
 =======
 >>>>>>> b4e7359 (linux docker-compose with proxy done):backend/helpers/client.php
 
+<<<<<<< HEAD
 function registr($db_connection, $login, $pas) {
   mysqli_query($db_connection, "INSERT INTO userlist1 (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($db_connection));
+<<<<<<< HEAD
 >>>>>>> e2d4835 (linux docker-compose with proxy done)
+=======
+=======
+function registr($link, $login, $pas) {
+  mysqli_query($link, "INSERT INTO userpwlg (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
+  $id = mysqli_insert_id($link);
+  mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
+>>>>>>> 4229b31 (create 2 tables sql)
+>>>>>>> c5fdc64 (create 2 tables sql)
 }
 
 function save($db_connection, $arr, $id) {
   mysqli_query($db_connection, "UPDATE userdata SET data='$arr' WHERE user_id='$id'") or die(mysqli_error($db_connection));
 }
 
+<<<<<<< HEAD
 function hasUserWithCredentials($db_connection, $login) {
   $count = mysqli_num_rows(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
   if ($count == 0) {
@@ -49,6 +60,15 @@ function hasUserWithCredentials($db_connection, $login) {
 
 function getUserData($db_connection, $login) {
   $user_data = mysqli_fetch_assoc(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
+=======
+function counter($link, $login) {
+  $count = mysqli_num_rows(mysqli_query($link, "SELECT * FROM userpwlg WHERE login='$login'"));
+  return $count;
+}
+
+function returnData($link, $login) {
+  $user_data = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM userpwlg WHERE login='$login'"));
+>>>>>>> 4229b31 (create 2 tables sql)
   return $user_data;
 }
 
