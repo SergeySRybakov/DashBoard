@@ -86,9 +86,19 @@ function registr($link, $login, $pas) {
 =======
 >>>>>>> b4e7359 (linux docker-compose with proxy done):backend/helpers/client.php
 
+<<<<<<< HEAD
 function registr($db_connection, $login, $pas) {
   mysqli_query($db_connection, "INSERT INTO userlist1 (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($db_connection));
+<<<<<<< HEAD
 >>>>>>> ae06b0a (linux docker-compose with proxy done)
+=======
+=======
+function registr($link, $login, $pas) {
+  mysqli_query($link, "INSERT INTO userpwlg (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
+  $id = mysqli_insert_id($link);
+  mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
+>>>>>>> 4229b31 (create 2 tables sql)
+>>>>>>> 386e9d0 (create 2 tables sql)
 }
 
 function save($db_connection, $arr, $id) {
@@ -98,10 +108,13 @@ function save($db_connection, $arr, $id) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 8dab0c8 (remake backend)
 =======
 >>>>>>> ae06b0a (linux docker-compose with proxy done)
+=======
+>>>>>>> 386e9d0 (create 2 tables sql)
 function hasUserWithCredentials($db_connection, $login) {
   $count = mysqli_num_rows(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
   if ($count == 0) {
@@ -118,6 +131,9 @@ function hasUserWithCredentials($db_connection, $login) {
 function getUserData($db_connection, $login) {
   $user_data = mysqli_fetch_assoc(mysqli_query($db_connection, "SELECT * FROM userlist1 WHERE login='$login'"));
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 386e9d0 (create 2 tables sql)
 =======
 function counter($link, $login) {
   $count = mysqli_num_rows(mysqli_query($link, "SELECT * FROM userpwlg WHERE login='$login'"));
@@ -127,6 +143,7 @@ function counter($link, $login) {
 function returnData($link, $login) {
   $user_data = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM userpwlg WHERE login='$login'"));
 >>>>>>> 4229b31 (create 2 tables sql)
+<<<<<<< HEAD
 =======
 }
 
@@ -135,6 +152,8 @@ function getUserData($db_connection, $login) {
 >>>>>>> 8dab0c8 (remake backend)
 =======
 >>>>>>> ae06b0a (linux docker-compose with proxy done)
+=======
+>>>>>>> 386e9d0 (create 2 tables sql)
   return $user_data;
 }
 
