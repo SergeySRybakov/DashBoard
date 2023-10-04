@@ -42,10 +42,9 @@ const Registr = () => {
     const password = document.getElementById("LogInPas").value;
     authService
       .logIn({ email, password })
-      .then(function (info) {
+      .then(function () {
         dispatch(setIsAuth(true));
         dispatch(setIsEditorModeOn(true));
-        console.log(info);
       })
       .catch(function () {
         dispatch(setIsAuth(false));
@@ -58,7 +57,6 @@ const Registr = () => {
         dispatch(setLayout(info.layout));
         dispatch(setWidgetsArray(info.widgets));
         dispatch(setWidgetsData(info.data));
-        console.log(info);
       })
       .catch(function (error) {
         console.log(error);
