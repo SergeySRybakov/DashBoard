@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: host1861629
+      MYSQL_USER: host1861629_1
+      MYSQL_PASSWORD: kWRRZgnFZA
+      MYSQL_ROOT_PASSWORD: root
+
+  php:
+    build: ./
+    volumes:
+      - ./backend:/var/www/html
+      - ./httpd.conf:/etc/apache2/apache2.conf
+    ports:
+      - 8000:80
+    environment:
+      DB_HOST: 185.26.122.81
+      DB_USER: host1861629_1
+      DB_NAME: host1861629
+      DB_PASS: kWRRZgnFZA
+
+  dev_nginx:
+    image: nginx:alpine
+    ports:
+      - 4000:80
+    volumes:
+      - .nginx-dev.conf:/etc/nginx/nginx.conf
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  db_data: {}
+
+
+
