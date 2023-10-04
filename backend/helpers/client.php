@@ -107,10 +107,32 @@ function registr($link, $login, $pas) {
 =======
 $db_connection = mysqli_connect(getenv("IP"), getenv("USER_NAME"), getenv("USER_PASSWORD"), getenv("DB_NAME"));
 
+<<<<<<< HEAD
 function registr($db_connection, $login, $pas) {
   mysqli_query($db_connection, "INSERT INTO userlist1 (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($db_connection));
 >>>>>>> 8dab0c8 (remake backend)
+<<<<<<< HEAD
 >>>>>>> 47ded23 (remake backend)
+=======
+=======
+$DB_HOST = getenv("DB_HOST");
+$DB_USER = getenv("DB_USER");
+$DB_PASS = getenv("DB_PASS");
+$DB_NAME = getenv("DB_NAME");
+
+$link = mysqli_connect(
+  $DB_HOST,
+  $DB_USER,
+  $DB_PASS,
+  $DB_NAME,
+);
+
+function registr($link, $login, $pas) {
+  mysqli_query($link, "INSERT INTO userpwlg (login, password) VALUES ('$login', '$pas')") or die(mysqli_error($link));
+  $id = mysqli_insert_id($link);
+  mysqli_query($link, "INSERT INTO userdata (user_id) VALUES ('$id')") or die(mysqli_error($link));
+>>>>>>> ab38985 (merge docker-compose)
+>>>>>>> 2684ffa (merge docker-compose)
 }
 
 function save($db_connection, $arr, $id) {
