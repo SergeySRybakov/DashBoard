@@ -1,6 +1,6 @@
 <?php
 require_once '../../../../../vendor/autoload.php';
-require_once './client.php';
+require_once './helpers/client.php';
 
 session_start();
 
