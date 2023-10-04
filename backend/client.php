@@ -30,3 +30,4 @@ function getDashboard($db_connection, $id) {
   $user_data = mysqli_fetch_assoc(mysqli_query($db_connection, "SELECT * FROM userdata WHERE user_id='$id'"));
   return $user_data;
 }
+?>
