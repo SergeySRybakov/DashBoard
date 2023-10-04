@@ -9,6 +9,6 @@ $dashes = $_SESSION['dash'];
 if ($dashes != null) {
     echo json_encode($dashes);
 } else {
-    echo [];
+    echo json_encode(getDashboard($db_connection, $login));
 }
 ?>

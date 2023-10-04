@@ -10,7 +10,7 @@ $login = $request_body['email'];
 
 if (hasUserWithCredentials($db_connection, $login)) {
   $id = getUserData($db_connection, $login)['id'];
-  $user_data = getDashboard($db_connection, $id);
+  $user_data = getDashboard($db_connection, $login);
   $dashes = $user_data['dashes'];
   $_SESSION['authorised'] = true;
   $_SESSION['name'] = $login;

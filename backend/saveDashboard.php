@@ -10,8 +10,7 @@ session_start();
 if ($_SESSION['authorised'] == true) {
   $login = $_SESSION['name'];
   $_SESSION['dash'] = $arr;
-  $id = $_SESSION['user_id'];
-  save($db_connection, $arr, $id);
+  save($db_connection, $arr, $login);
 } else {
   http_response_code(401);
 }

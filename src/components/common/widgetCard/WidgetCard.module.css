@@ -35,5 +35,6 @@
   border: 1px solid rgba(122, 122, 122, 0.267);
 }
 .WidgetCardInEditMode:hover {
-  border: 1px solid rgb(74, 200, 161);
+  border: 1px solid rgb(48, 70, 62);
+  /* border: 1px solid rgb(74, 200, 161); */
 }

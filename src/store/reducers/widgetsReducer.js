@@ -14,7 +14,7 @@ export const widgetSlice = createSlice({
     deleteWidgetFromArray: (state, action) => {
       const i = action.payload;
       state.widgetsArray[i] = null;
-      console.log(state.widgetsArray);
+      /* state.widgetsArray = state.widgetsArray.splice(i, 1); */
     },
   },
 });
