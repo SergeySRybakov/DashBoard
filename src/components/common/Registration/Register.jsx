@@ -26,9 +26,10 @@ const Registr = () => {
     const password = document.getElementById("PasSignUp").value;
     authService
       .signUp({ email, password })
-      .then(() => {
+      .then(info => {
         dispatch(setIsAuth(true));
         dispatch(setIsEditorModeOn(true));
+        console.log(info);
       })
       .catch(() => {
         dispatch(setIsAuth(false));
@@ -42,9 +43,10 @@ const Registr = () => {
     const password = document.getElementById("LogInPas").value;
     authService
       .logIn({ email, password })
-      .then(function () {
+      .then(function (info) {
         dispatch(setIsAuth(true));
         dispatch(setIsEditorModeOn(true));
+        console.log(info);
       })
       .catch(function () {
         dispatch(setIsAuth(false));
