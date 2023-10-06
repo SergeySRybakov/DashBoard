@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Textarea } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { setWidgetsData } from "../../../../store/reducers/widgetDataReducer";
+import { setWidgetsData } from "../../../store/reducers/widgetDataReducer";
 
 const ArrayTextarea = ({ i, widgetData }) => {
   const dispatch = useDispatch();

@@ -1,10 +1,10 @@
 import React from "react";
 import { Button } from "@chakra-ui/react";
-import { dashboardService } from "../../../api/dashboard.service";
+import { dashboardService } from "../../api/dashboard.service";
 import { useDispatch, useSelector } from "react-redux";
-import { setLayout } from "../../../store/reducers/layoutReducer";
-import { setWidgetsArray } from "../../../store/reducers/widgetsReducer";
-import { setWidgetsData } from "../../../store/reducers/widgetDataReducer";
+import { setLayout } from "../../store/reducers/layoutReducer";
+import { setWidgetsArray } from "../../store/reducers/widgetsReducer";
+import { setWidgetsData } from "../../store/reducers/widgetDataReducer";
 
 const LoadSavings = () => {
   const dispatch = useDispatch();

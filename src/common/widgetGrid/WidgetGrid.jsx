@@ -2,7 +2,7 @@ import React from "react";
 import RGL, { WidthProvider } from "react-grid-layout";
 import WidgetCard from "../widgetCard/WidgetCard";
 import "react-grid-layout/css/styles.css";
-import { setLayout } from "../../../store/reducers/layoutReducer";
+import { setLayout } from "../../store/reducers/layoutReducer";
 import { useDispatch, useSelector } from "react-redux";
 
 const ReactGridLayout = WidthProvider(RGL);

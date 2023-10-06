@@ -7,11 +7,11 @@ import SimpleArray from "../widgets/SimpleArray";
 import Picture from "../widgets/Picture";
 import Text from "../widgets/Text";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteWidget } from "../../../store/reducers/layoutReducer";
-import { setWidgetsData } from "../../../store/reducers/widgetDataReducer";
+import { deleteWidget } from "../../store/reducers/layoutReducer";
+import { setWidgetsData } from "../../store/reducers/widgetDataReducer";
 import OverviewTextarea from "../widgets/supComp/OverviewTextarea";
 import ArrayTextarea from "../widgets/supComp/ArrayTextarea";
-import { deleteWidgetFromArray } from "../../../store/reducers/widgetsReducer";
+import { deleteWidgetFromArray } from "../../store/reducers/widgetsReducer";
 
 const WidgetCard = ({ i }) => {
   const dispatch = useDispatch();

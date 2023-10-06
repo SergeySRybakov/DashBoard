@@ -1,6 +1,6 @@
 import React from "react";
-import { authService } from "../../../api/auth.service";
-import { dashboardService } from "../../../api/dashboard.service";
+import { authService } from "../../api/auth.service";
+import { dashboardService } from "../../api/dashboard.service";
 import {
   Menu,
   MenuButton,
@@ -12,11 +12,11 @@ import {
   ButtonGroup,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { setLayout } from "../../../store/reducers/layoutReducer";
-import { setIsEditorModeOn } from "../../../store/reducers/editorReducer";
-import { setIsAuth } from "../../../store/reducers/authReducer";
-import { setWidgetsArray } from "../../../store/reducers/widgetsReducer";
-import { setWidgetsData } from "../../../store/reducers/widgetDataReducer";
+import { setLayout } from "../../store/reducers/layoutReducer";
+import { setIsEditorModeOn } from "../../store/reducers/editorReducer";
+import { setIsAuth } from "../../store/reducers/authReducer";
+import { setWidgetsArray } from "../../store/reducers/widgetsReducer";
+import { setWidgetsData } from "../../store/reducers/widgetDataReducer";
 
 const Registr = () => {
   const dispatch = useDispatch();

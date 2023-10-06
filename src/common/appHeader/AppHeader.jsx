@@ -15,9 +15,9 @@ import {
 import styles from "./AppHeader.module.css";
 import { AddIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsEditorModeOn } from "../../../store/reducers/editorReducer";
-import { addWidgetToArray } from "../../../store/reducers/widgetsReducer";
-import { setLayout } from "../../../store/reducers/layoutReducer";
+import { setIsEditorModeOn } from "../../store/reducers/editorReducer";
+import { addWidgetToArray } from "../../store/reducers/widgetsReducer";
+import { setLayout } from "../../store/reducers/layoutReducer";
 
 const AppHeader = () => {
   const dispatch = useDispatch();

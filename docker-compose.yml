@@ -8,9 +8,9 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: host1861629
-      MYSQL_USER: host1861629_1
-      MYSQL_PASSWORD: kWRRZgnFZA
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
       MYSQL_ROOT_PASSWORD: root
 
   php:
@@ -21,10 +21,10 @@ services:
     ports:
       - 8000:80
     environment:
-      DB_HOST: 185.26.122.81
-      DB_USER: host1861629_1
-      DB_NAME: host1861629
-      DB_PASS: kWRRZgnFZA
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_NAME: ${DB_NAME}
+      DB_PASS: ${DB_PASS}
 
   dev_nginx:
     image: nginx:alpine

@@ -2,7 +2,7 @@ import React from "react";
 import "./Picture.css";
 import FileUploader from "devextreme-react/file-uploader";
 import { useDispatch } from "react-redux";
-import { setWidgetsData } from "../../../store/reducers/widgetDataReducer";
+import { setWidgetsData } from "../../store/reducers/widgetDataReducer";
 
 const Picture = ({ isEditorModeOn, i, widgetData }) => {
   const dispatch = useDispatch();
@@ -70,7 +70,7 @@ const Picture = ({ isEditorModeOn, i, widgetData }) => {
             id="drpZone"
             style={{
               border: "dashed",
-              padding: "3%",
+              padding: "1%",
               objectFit: "contain",
               display: "flex",
               justifyContent: "center",
