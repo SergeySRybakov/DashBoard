@@ -19,7 +19,6 @@ const LoadSavings = () => {
         dispatch(setLayout(info.layout));
         dispatch(setWidgetsArray(info.widgets));
         dispatch(setWidgetsData(info.data));
-        console.log(info);
       })
       .catch(error => {
         console.log(error);
@@ -29,13 +28,11 @@ const LoadSavings = () => {
   const handleSaveButtonClick = () => {
     dashboardService
       .SaveEditings({
-        layout: layout, //по идее можно было просто написать layout вместо 'layout': ..., но так выглядит красивее, как по мне
+        layout: layout,
         widgets: widgetsArray,
         data: widgetData ?? [],
       })
-      .then(response => {
-        console.log(response);
-      })
+      .then(() => {})
       .catch(error => {
         console.log(error);
       });

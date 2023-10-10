@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Textarea } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { setWidgetsData } from "../../../store/reducers/widgetDataReducer";
+import { addWidgetDataElement } from "../../../store/reducers/widgetDataReducer";
 
-const ArrayTextarea = ({ i, widgetData }) => {
+const ArrayTextarea = ({ i }) => {
   const dispatch = useDispatch();
 
   const handelArrayDataAddingButtonCkick = () => {
@@ -41,9 +41,7 @@ const ArrayTextarea = ({ i, widgetData }) => {
           ...item,
         };
       });
-    let obj = Object.assign([], widgetData);
-    obj[i] = [arrayInfo, columns];
-    dispatch(setWidgetsData(obj));
+    dispatch(addWidgetDataElement({ i, text: [arrayInfo, columns] }));
   };
   return (
     <>

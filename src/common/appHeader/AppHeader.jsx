@@ -32,7 +32,6 @@ const AppHeader = () => {
     const lastWidgetPosition = layout[layout.length - 1]
       ? layout[layout.length - 1]
       : { x: 2, y: 2 };
-    console.log(layout);
     dispatch(
       setLayout([
         ...layout,
@@ -49,7 +48,6 @@ const AppHeader = () => {
       ]),
     );
     dispatch(addWidgetToArray(item));
-    console.log(layout);
   };
 
   const allWidgetOptions = ["Overview", "Simple Array", "Picture", "Text"];

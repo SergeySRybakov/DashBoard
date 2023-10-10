@@ -46,7 +46,6 @@ const Registr = () => {
       .then(function (info) {
         dispatch(setIsAuth(true));
         dispatch(setIsEditorModeOn(true));
-        console.log(info);
       })
       .catch(function () {
         dispatch(setIsAuth(false));

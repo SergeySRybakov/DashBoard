@@ -1,9 +1,9 @@
 import React from "react";
 import { Textarea, Button, useAccordion } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { setWidgetsData } from "../../../store/reducers/widgetDataReducer";
+import { addWidgetDataElement } from "../../../store/reducers/widgetDataReducer";
 
-const OverviewTextarea = ({ i, widgetData }) => {
+const OverviewTextarea = ({ i }) => {
   const dispatch = useDispatch();
 
   const handelOverviewDataAddingButtonCkick = () => {
@@ -26,9 +26,7 @@ const OverviewTextarea = ({ i, widgetData }) => {
       .map(item => {
         return item.trim();
       });
-    let obj = Object.assign([], widgetData);
-    obj[i] = [inf, base];
-    dispatch(setWidgetsData(obj));
+    dispatch(addWidgetDataElement({ i, text: [inf, base] }));
   };
 
   return (

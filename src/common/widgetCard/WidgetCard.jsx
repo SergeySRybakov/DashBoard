@@ -119,9 +119,9 @@ const WidgetCard = ({ i }) => {
             />
             <MenuList>
               {widgetsArray[i] === "Overview" ? (
-                <OverviewTextarea i={i} widgetData={widgetData} />
+                <OverviewTextarea i={i} />
               ) : (
-                <ArrayTextarea i={i} widgetData={widgetData} />
+                <ArrayTextarea i={i} />
               )}
             </MenuList>
           </Menu>

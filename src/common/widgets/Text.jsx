@@ -1,18 +1,10 @@
-import React from "react";
+import { React, useEffect, useRef } from "react";
 import { Textarea, Button } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { setWidgetsData } from "../../store/reducers/widgetDataReducer";
+import { addWidgetDataElement } from "../../store/reducers/widgetDataReducer";
 
 const Text = ({ isEditorModeOn, i, widgetData }) => {
   const dispatch = useDispatch();
-  let textData = "Nothing";
-
-  const handleAddingTextButtomClick = () => {
-    textData = document.getElementById(`${i}textWidget`).value;
-    let obj = Object.assign([], widgetData);
-    obj[i] = textData;
-    dispatch(setWidgetsData(obj));
-  };
 
   const loadText = () => {
     document.getElementById(`${i}textWidget`).value = widgetData[i];
@@ -24,16 +16,13 @@ const Text = ({ isEditorModeOn, i, widgetData }) => {
           <Textarea
             maxHeight={"100%"}
             height={"100%"}
-            placeholder={widgetData[i]}
+            defaultValue={widgetData[i]}
+            placeholder={widgetData[i] ?? "Nothing"}
             id={`${i}textWidget`}
+            onChange={e => {
+              dispatch(addWidgetDataElement({ i, text: e.target.value }));
+            }}
           />
-          <Button
-            border={"1px solid #858585"}
-            borderRadius={0}
-            onClick={handleAddingTextButtomClick}
-          >
-            SaveText
-          </Button>
           <Button border={"1px solid #858585"} borderRadius={0} onClick={loadText}>
             LoadText
           </Button>
