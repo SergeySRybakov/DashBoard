@@ -1,14 +1,11 @@
-import { React, useEffect, useRef } from "react";
-import { Textarea, Button } from "@chakra-ui/react";
+import { React } from "react";
+import { Textarea } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { addWidgetDataElement } from "../../store/reducers/widgetDataReducer";
 
 const Text = ({ isEditorModeOn, i, widgetData }) => {
   const dispatch = useDispatch();
 
-  const loadText = () => {
-    document.getElementById(`${i}textWidget`).value = widgetData[i];
-  };
   return (
     <>
       {isEditorModeOn ? (
@@ -23,9 +20,6 @@ const Text = ({ isEditorModeOn, i, widgetData }) => {
               dispatch(addWidgetDataElement({ i, text: e.target.value }));
             }}
           />
-          <Button border={"1px solid #858585"} borderRadius={0} onClick={loadText}>
-            LoadText
-          </Button>
         </div>
       ) : (
         <p

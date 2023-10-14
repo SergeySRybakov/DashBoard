@@ -2,7 +2,7 @@ import React from "react";
 import "./Picture.css";
 import FileUploader from "devextreme-react/file-uploader";
 import { useDispatch } from "react-redux";
-import { setWidgetsData } from "../../store/reducers/widgetDataReducer";
+import { setWidgetsData, addWidgetDataElement } from "../../store/reducers/widgetDataReducer";
 
 const Picture = ({ isEditorModeOn, i, widgetData }) => {
   const dispatch = useDispatch();
@@ -16,9 +16,10 @@ const Picture = ({ isEditorModeOn, i, widgetData }) => {
     reader.readAsDataURL(file);
 
     reader.onloadend = function () {
-      obj = Object.assign([], widgetData);
+      /* obj = Object.assign([], widgetData);
       obj[i] = reader.result;
-      dispatch(setWidgetsData(obj));
+      dispatch(setWidgetsData(obj)); */
+      dispatch(addWidgetDataElement({ i, text: reader.result }));
     };
   };
 
