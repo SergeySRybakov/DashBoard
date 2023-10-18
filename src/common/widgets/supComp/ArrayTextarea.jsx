@@ -1,10 +1,16 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Button, Textarea } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { addWidgetDataElement } from "../../../store/reducers/widgetDataReducer";
 
 const ArrayTextarea = ({ i }) => {
   const dispatch = useDispatch();
+
+  const [data, setData] = useState("");
+
+  useEffect(() => {
+    dispatch(addWidgetDataElement({ i, text: data }));
+  }, [data]);
 
   const handelArrayDataAddingButtonCkick = () => {
     const columns = document
@@ -41,7 +47,7 @@ const ArrayTextarea = ({ i }) => {
           ...item,
         };
       });
-    dispatch(addWidgetDataElement({ i, text: [arrayInfo, columns] }));
+    setData([arrayInfo, columns]);
   };
   return (
     <>

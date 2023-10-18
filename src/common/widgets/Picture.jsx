@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import "./Picture.css";
 import FileUploader from "devextreme-react/file-uploader";
 import { useDispatch } from "react-redux";
@@ -7,7 +7,12 @@ import { setWidgetsData, addWidgetDataElement } from "../../store/reducers/widge
 const Picture = ({ isEditorModeOn, i, widgetData }) => {
   const dispatch = useDispatch();
   const allowedFileExtensions = [".jpg", ".jpeg", ".gif", ".png"];
-  let obj = [];
+
+  const [picture, setPicture] = useState(widgetData[i] ?? "");
+
+  useEffect(() => {
+    dispatch(addWidgetDataElement({ i, text: picture }));
+  }, [picture]);
 
   const load = e => {
     let { file } = e;
@@ -16,10 +21,7 @@ const Picture = ({ isEditorModeOn, i, widgetData }) => {
     reader.readAsDataURL(file);
 
     reader.onloadend = function () {
-      /* obj = Object.assign([], widgetData);
-      obj[i] = reader.result;
-      dispatch(setWidgetsData(obj)); */
-      dispatch(addWidgetDataElement({ i, text: reader.result }));
+      setPicture(reader.result);
     };
   };
 

@@ -1,10 +1,16 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Textarea, Button, useAccordion } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { addWidgetDataElement } from "../../../store/reducers/widgetDataReducer";
 
 const OverviewTextarea = ({ i }) => {
   const dispatch = useDispatch();
+
+  const [data, setData] = useState("");
+
+  useEffect(() => {
+    dispatch(addWidgetDataElement({ i, text: data }));
+  }, [data]);
 
   const handelOverviewDataAddingButtonCkick = () => {
     const inf = document
@@ -26,7 +32,7 @@ const OverviewTextarea = ({ i }) => {
       .map(item => {
         return item.trim();
       });
-    dispatch(addWidgetDataElement({ i, text: [inf, base] }));
+    setData([inf, base]);
   };
 
   return (
