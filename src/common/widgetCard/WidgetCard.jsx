@@ -8,7 +8,7 @@ import Picture from "../widgets/Picture";
 import Text from "../widgets/Text";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteWidget } from "../../store/reducers/layoutReducer";
-import { setWidgetsData } from "../../store/reducers/widgetDataReducer";
+import { addWidgetDataElement } from "../../store/reducers/widgetDataReducer";
 import OverviewTextarea from "../widgets/supComp/OverviewTextarea";
 import ArrayTextarea from "../widgets/supComp/ArrayTextarea";
 import { deleteWidgetFromArray } from "../../store/reducers/widgetsReducer";
@@ -85,18 +85,32 @@ const WidgetCard = ({ i }) => {
         }
       />
     ),
-    Picture: <Picture isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} />,
-    Text: <Text isEditorModeOn={isEditorModeOn} i={i} widgetData={widgetData} />,
+    Picture: (
+      <Picture
+        isEditorModeOn={isEditorModeOn}
+        i={i}
+        data={widgetData[i]}
+        onChange={data => handleWidgetDataChange(i, data)}
+      />
+    ),
+    Text: (
+      <Text
+        isEditorModeOn={isEditorModeOn}
+        data={widgetData[i]}
+        onChange={data => handleWidgetDataChange(i, data)}
+      />
+    ),
+  };
+
+  const handleWidgetDataChange = (widgetIndex, data) => {
+    dispatch(addWidgetDataElement({ i: widgetIndex, text: data }));
   };
 
   const handleWidgetCloseButtonClick = () => {
-    let obj = Object.assign([], widgetData);
-    obj[i] = null;
-    dispatch(setWidgetsData(obj));
+    dispatch(addWidgetDataElement({ i, text: null }));
     dispatch(deleteWidget(i));
     dispatch(deleteWidgetFromArray(i));
   };
-  // (widgetsArray[i] === "SimpleArray" || widgetsArray[i] === "Picture") ? justifyContent: "space-between" : justifyContent: "space-between"
 
   return (
     <div className={`${styles.WidgetCard} ${isEditorModeOn && styles.WidgetCardInEditMode}`}>
@@ -119,9 +133,15 @@ const WidgetCard = ({ i }) => {
             />
             <MenuList>
               {widgetsArray[i] === "Overview" ? (
-                <OverviewTextarea i={i} />
+                <OverviewTextarea
+                  data={widgetData[i]}
+                  onChange={data => handleWidgetDataChange(i, data)}
+                />
               ) : (
-                <ArrayTextarea i={i} />
+                <ArrayTextarea
+                  data={widgetData[i]}
+                  onChange={data => handleWidgetDataChange(i, data)}
+                />
               )}
             </MenuList>
           </Menu>

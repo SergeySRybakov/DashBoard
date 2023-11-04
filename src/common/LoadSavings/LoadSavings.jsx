@@ -2,14 +2,7 @@ import React from "react";
 import { Button } from "@chakra-ui/react";
 import axios from "axios";
 
-const LoadSavings = ({
-  setLayout,
-  setCounter,
-  setWidget,
-  widgetsArray,
-  setArray,
-  setWidgetData,
-}) => {
+const LoadSavings = ({ setLayout, setCounter, setArray, setWidgetData }) => {
   return (
     <Button
       fontSize={"x-small"}

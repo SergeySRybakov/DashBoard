@@ -1,17 +1,14 @@
 import { React, useState, useEffect } from "react";
 import "./Picture.css";
 import FileUploader from "devextreme-react/file-uploader";
-import { useDispatch } from "react-redux";
-import { setWidgetsData, addWidgetDataElement } from "../../store/reducers/widgetDataReducer";
 
-const Picture = ({ isEditorModeOn, i, widgetData }) => {
-  const dispatch = useDispatch();
+const Picture = ({ isEditorModeOn, i, data, onChange }) => {
   const allowedFileExtensions = [".jpg", ".jpeg", ".gif", ".png"];
 
-  const [picture, setPicture] = useState(widgetData[i] ?? "");
+  const [picture, setPicture] = useState(data ?? "");
 
   useEffect(() => {
-    dispatch(addWidgetDataElement({ i, text: picture }));
+    onChange(picture);
   }, [picture]);
 
   const load = e => {
@@ -26,68 +23,24 @@ const Picture = ({ isEditorModeOn, i, widgetData }) => {
   };
 
   return (
-    <div
-      className={`widget-container ${i + "dropzone-external"}`}
-      style={{
-        objectFit: "contain",
-        display: "flex",
-        justifyContent: "center",
-        verticalAlign: "top",
-        textAlign: "center",
-        marginBlock: "0",
-        width: "100%",
-        height: "100%",
-        position: "relative",
-        top: "0",
-      }}
-    >
+    <div className={`widget-container ${i + "dropzone-external"}`}>
       <div
         id={`${"dropzone-external" + i}`}
-        style={{
-          objectFit: "contain",
-          display: "flex",
-          justifyContent: "center",
-          verticalAlign: "top",
-          textAlign: "center",
-          marginBlock: "0",
-          width: "100%",
-          height: "100%",
-          position: "relative",
-          top: "0",
-        }}
-        className={`flex-box ${i + "dropzone-external"} ${
+        className={`flex-box number-dropzone ${i + "dropzone-external"} ${
           isEditorModeOn
             ? "dx-theme-accent-as-border-color dropzone-active"
             : "dx-theme-border-color"
         }`}
       >
-        {widgetData[i] ? (
+        {data ? (
           <img
             style={{ maxWidth: "100%", maxHeight: "100%" }}
             id="dropzone-image"
-            src={widgetData[i]}
+            src={data}
             alt=""
           />
         ) : (
-          <div
-            id="drpZone"
-            style={{
-              border: "dashed",
-              padding: "1%",
-              objectFit: "contain",
-              display: "flex",
-              justifyContent: "center",
-              verticalAlign: "top",
-              textAlign: "center",
-              marginBlock: "0",
-              width: "100%",
-              maxHeight: "95%",
-              top: "0",
-              fontSize: "2vw",
-            }}
-          >
-            Drop or input your file
-          </div>
+          <div id="drpZone">Drop or input your file</div>
         )}
       </div>
       {isEditorModeOn && (

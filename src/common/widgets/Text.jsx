@@ -1,25 +1,21 @@
 import { React, useState, useEffect } from "react";
 import { Textarea } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
-import { addWidgetDataElement } from "../../store/reducers/widgetDataReducer";
+import "./Text.css";
 
-const Text = ({ isEditorModeOn, i, widgetData }) => {
-  const dispatch = useDispatch();
-  const [text, setText] = useState(widgetData[i] ?? "");
+const Text = ({ isEditorModeOn, data, onChange }) => {
+  const [text, setText] = useState(data ?? "");
 
   useEffect(() => {
-    dispatch(addWidgetDataElement({ i, text: text }));
+    onChange(text);
   }, [text]);
 
   if (isEditorModeOn) {
     return (
       <div style={{ display: "flex", flexDirection: "column", width: "100%", height: "100%" }}>
         <Textarea
-          maxHeight={"100%"}
-          height={"100%"}
-          defaultValue={widgetData[i]}
-          placeholder={widgetData[i] ?? "Nothing"}
-          id={`${i}textWidget`}
+          value={text}
+          /* defaultValue={data} */
+          placeholder={data ?? "Nothing"}
           onChange={e => {
             setText(e.target.value);
           }}
@@ -28,19 +24,7 @@ const Text = ({ isEditorModeOn, i, widgetData }) => {
     );
   }
 
-  return (
-    <p
-      style={{
-        whiteSpace: "normal",
-        width: "100%",
-        overflow: "auto",
-        height: "100%",
-        textAlign: "center",
-      }}
-    >
-      {widgetData[i]}
-    </p>
-  );
+  return <p className="text-widget-p">{data}</p>;
 };
 
 export default Text;

@@ -1,0 +1,8 @@
+
+.text-widget-p {
+  white-space: normal;
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+  text-align: center;
+}

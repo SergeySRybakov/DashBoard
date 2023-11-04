@@ -1,21 +1,19 @@
 import { React, useState, useEffect } from "react";
-import { Textarea, Button, useAccordion } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
-import { addWidgetDataElement } from "../../../store/reducers/widgetDataReducer";
+import { Textarea, Button } from "@chakra-ui/react";
 
-const OverviewTextarea = ({ i }) => {
-  const dispatch = useDispatch();
+const OverviewTextarea = ({ data, onChange }) => {
+  const [dataOverview, setDataOverview] = useState(data ?? "");
 
-  const [data, setData] = useState("");
+  const [complaint, setComp] = useState(data[0] ?? "");
+  const [baseInf, setBase] = useState(data[1] ?? "");
 
   useEffect(() => {
-    dispatch(addWidgetDataElement({ i, text: data }));
-  }, [data]);
+    onChange(dataOverview);
+  }, [dataOverview]);
 
   const handelOverviewDataAddingButtonCkick = () => {
-    const inf = document
-      .getElementById(`${i}textareaOverview`)
-      .value.split(",")
+    const inf = complaint.value
+      .split(",")
       .map(function (inf) {
         return inf.trim().split(":");
       })
@@ -26,13 +24,10 @@ const OverviewTextarea = ({ i }) => {
         };
       });
 
-    const base = document
-      .getElementById(`${i}textareaOverviewBase`)
-      .value.split(",")
-      .map(item => {
-        return item.trim();
-      });
-    setData([inf, base]);
+    const base = baseInf.value.split(",").map(item => {
+      return item.trim();
+    });
+    setDataOverview([inf, base]);
   };
 
   return (
@@ -40,12 +35,12 @@ const OverviewTextarea = ({ i }) => {
       <Textarea
         placeholder="insert data like complaint:data, ..."
         resize={"none"}
-        id={`${i}textareaOverview`}
+        onChange={e => setComp(e.target.value)}
       />
       <Textarea
         placeholder="insert name of table, interval, percentage interval, constant line percent"
         resize={"none"}
-        id={`${i}textareaOverviewBase`}
+        onChange={e => setBase(e.target.value)}
       />
       <Button onClick={handelOverviewDataAddingButtonCkick}>SaveData</Button>
     </>

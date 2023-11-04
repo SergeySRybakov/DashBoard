@@ -1,28 +1,23 @@
 import { React, useState, useEffect } from "react";
 import { Button, Textarea } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
-import { addWidgetDataElement } from "../../../store/reducers/widgetDataReducer";
 
-const ArrayTextarea = ({ i }) => {
-  const dispatch = useDispatch();
+const ArrayTextarea = ({ data, onChange }) => {
+  const [dataArray, setDataArray] = useState(data ?? "");
 
-  const [data, setData] = useState("");
+  const [colNames, setColNames] = useState(data[1] ?? "");
+  const [Info, setInfo] = useState(data[0] ?? "");
 
   useEffect(() => {
-    dispatch(addWidgetDataElement({ i, text: data }));
-  }, [data]);
+    onChange(dataArray);
+  }, [dataArray]);
 
   const handelArrayDataAddingButtonCkick = () => {
-    const columns = document
-      .getElementById(`${i}textareaArrayColumns`)
-      .value.split(",")
-      .map(item => {
-        return item.trim();
-      });
+    const columns = colNames.value.split(",").map(item => {
+      return item.trim();
+    });
 
-    const arrayInfo = document
-      .getElementById(`${i}textareaArrayData`)
-      .value.split(";")
+    const arrayInfo = Info.value
+      .split(";")
       .map(arr => {
         return arr.split(",");
       })
@@ -47,19 +42,19 @@ const ArrayTextarea = ({ i }) => {
           ...item,
         };
       });
-    setData([arrayInfo, columns]);
+    setDataArray([arrayInfo, columns]);
   };
   return (
     <>
       <Textarea
         placeholder={"Insert column name's"}
         resize={"none"}
-        id={`${i}textareaArrayColumns`}
+        onChange={e => setColNames(e.target.value)}
       />
       <Textarea
         placeholder={"Insert data by spliting lines with ';'"}
         resize={"none"}
-        id={`${i}textareaArrayData`}
+        onChange={e => setInfo(e.target.value)}
       />
       <Button onClick={handelArrayDataAddingButtonCkick}>SaveData</Button>
     </>
