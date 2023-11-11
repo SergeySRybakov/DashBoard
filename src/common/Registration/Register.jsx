@@ -26,10 +26,9 @@ const Registr = () => {
     const password = document.getElementById("PasSignUp").value;
     authService
       .signUp({ email, password })
-      .then(info => {
+      .then(() => {
         dispatch(setIsAuth(true));
         dispatch(setIsEditorModeOn(true));
-        console.log(info);
       })
       .catch(() => {
         dispatch(setIsAuth(false));
@@ -60,7 +59,7 @@ const Registr = () => {
         dispatch(setWidgetsData(info.data));
       })
       .catch(function (error) {
-        console.log(error);
+        //error
       });
   };
   return (

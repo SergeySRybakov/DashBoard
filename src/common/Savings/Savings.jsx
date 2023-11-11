@@ -20,8 +20,8 @@ const LoadSavings = () => {
         dispatch(setWidgetsArray(info.widgets));
         dispatch(setWidgetsData(info.data));
       })
-      .catch(error => {
-        console.log(error);
+      .catch(() => {
+        //error
       });
   };
 
@@ -32,9 +32,11 @@ const LoadSavings = () => {
         widgets: widgetsArray,
         data: widgetData ?? [],
       })
-      .then(() => {})
-      .catch(error => {
-        console.log(error);
+      .then(() => {
+        //
+      })
+      .catch(() => {
+        //error
       });
   };
   return (
