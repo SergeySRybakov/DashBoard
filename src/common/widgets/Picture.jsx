@@ -1,11 +1,14 @@
 import { React, useState, useEffect } from "react";
 import "./Picture.css";
+import { v4 as uuidv4 } from "uuid";
 import FileUploader from "devextreme-react/file-uploader";
+import cn from "classnames";
 
-const Picture = ({ isEditorModeOn, i, data, onChange }) => {
-  const allowedFileExtensions = [".jpg", ".jpeg", ".gif", ".png"];
+const Picture = ({ isEditorModeOn, data, onChange }) => {
+  const allowedFileExtensions = [".jpg", ".jpeg", ".gif", ".png", ".webp"];
 
   const [picture, setPicture] = useState(data ?? "");
+  const pictureId = uuidv4();
 
   useEffect(() => {
     onChange(picture);
@@ -23,21 +26,20 @@ const Picture = ({ isEditorModeOn, i, data, onChange }) => {
   };
 
   return (
-    <div className={`widget-container ${i + "dropzone-external"}`}>
+    <div className={`widget-container ${pictureId + "dropzone-external"}`}>
       <div
-        id={`${"dropzone-external" + i}`}
-        className={`flex-box number-dropzone ${i + "dropzone-external"} ${
-          isEditorModeOn
-            ? "dx-theme-accent-as-border-color dropzone-active"
-            : "dx-theme-border-color"
-        }`}
+        id={`${"dropzone-external" + pictureId}`}
+        className={cn("flex-box number-dropzone", `${pictureId + "dropzone-external"}`, {
+          "dx-theme-accent-as-border-color dropzone-active": isEditorModeOn,
+          "dx-theme-border-color": !isEditorModeOn,
+        })}
       >
         {data ? (
           <img
             style={{ maxWidth: "100%", maxHeight: "100%" }}
             id="dropzone-image"
             src={data}
-            alt=""
+            alt="your file"
           />
         ) : (
           <div id="drpZone">Drop or input your file</div>
@@ -45,9 +47,9 @@ const Picture = ({ isEditorModeOn, i, data, onChange }) => {
       </div>
       {isEditorModeOn && (
         <FileUploader
-          id={`${i}fileInputBase`}
-          dialogTrigger={`#${"dropzone-external" + i}`}
-          dropZone={`#${"dropzone-external" + i}`}
+          id={`${pictureId}fileInputBase`}
+          dialogTrigger={`#${"dropzone-external" + pictureId}`}
+          dropZone={`#${"dropzone-external" + pictureId}`}
           multiple={false}
           allowedFileExtensions={allowedFileExtensions}
           uploadMode="instantly"

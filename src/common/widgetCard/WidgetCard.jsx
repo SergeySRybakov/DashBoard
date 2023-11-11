@@ -88,7 +88,6 @@ const WidgetCard = ({ i }) => {
     Picture: (
       <Picture
         isEditorModeOn={isEditorModeOn}
-        i={i}
         data={widgetData[i]}
         onChange={data => handleWidgetDataChange(i, data)}
       />

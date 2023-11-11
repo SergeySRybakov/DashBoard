@@ -14,7 +14,6 @@ const Text = ({ isEditorModeOn, data, onChange }) => {
       <div style={{ display: "flex", flexDirection: "column", width: "100%", height: "100%" }}>
         <Textarea
           value={text}
-          /* defaultValue={data} */
           placeholder={data ?? "Nothing"}
           onChange={e => {
             setText(e.target.value);

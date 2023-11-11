@@ -69,11 +69,11 @@ const Registr = () => {
         <MenuButton as={Button}>SignUp</MenuButton>
         <MenuList>
           <FormControl isRequired>
-            <FormLabel>Username</FormLabel>
+            <FormLabel htmlFor="EmailSignUp">Username</FormLabel>
             <Input id="EmailSignUp" borderRadius={0} placeholder="Email" type="email" />
           </FormControl>
           <FormControl isRequired>
-            <FormLabel>Password</FormLabel>
+            <FormLabel htmlFor="PasSignUp">Password</FormLabel>
             <Input id="PasSignUp" borderRadius={0} placeholder="Password" type="password" />
           </FormControl>
           <Button
@@ -91,11 +91,11 @@ const Registr = () => {
         <MenuButton as={Button}>LogIn</MenuButton>
         <MenuList>
           <FormControl isRequired>
-            <FormLabel>Username</FormLabel>
+            <FormLabel htmlFor="LogInEmail">Username</FormLabel>
             <Input id="LogInEmail" borderRadius={0} placeholder="Email" type="email" />
           </FormControl>
           <FormControl isRequired>
-            <FormLabel>Password</FormLabel>
+            <FormLabel htmlFor="LogInPas">Password</FormLabel>
             <Input id="LogInPas" borderRadius={0} placeholder="Password" type="password" />
           </FormControl>
           <Button
