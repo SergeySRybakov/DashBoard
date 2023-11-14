@@ -1,15 +1,15 @@
-import React from "react";
 import RGL, { WidthProvider } from "react-grid-layout";
 import WidgetCard from "../widgetCard/WidgetCard";
 import "react-grid-layout/css/styles.css";
-import { setLayout } from "../../store/reducers/layoutReducer";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useWidgets } from "../../hooks/use-widgets";
 
 const ReactGridLayout = WidthProvider(RGL);
 
 const WidgetGrid = ({ layout }) => {
-  const dispatch = useDispatch();
   const isEditorModeOn = useSelector(state => state.editor.isEditorModeOn);
+  const { updateLayout } = useWidgets();
+
   return (
     <ReactGridLayout
       className="layout"
@@ -17,7 +17,7 @@ const WidgetGrid = ({ layout }) => {
       cols={6}
       isDraggable={isEditorModeOn}
       isResizable={isEditorModeOn}
-      onLayoutChange={layout => dispatch(setLayout(layout))}
+      onLayoutChange={updateLayout}
     >
       {layout.map(item => (
         <div key={item.i}>

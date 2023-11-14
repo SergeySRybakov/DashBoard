@@ -8,9 +8,6 @@ export const widgetDataSlice = createSlice({
     setWidgetsData: (state, action) => {
       state.widgetsData = action.payload;
     },
-    addWidgetDataElement: (state, action) => {
-      state.widgetsData[action.payload.i] = action.payload.text;
-    },
   },
 });
 

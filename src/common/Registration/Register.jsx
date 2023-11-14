@@ -12,11 +12,9 @@ import {
   ButtonGroup,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { setLayout } from "../../store/reducers/layoutReducer";
-import { setIsEditorModeOn } from "../../store/reducers/editorReducer";
-import { setIsAuth } from "../../store/reducers/authReducer";
-import { setWidgetsArray } from "../../store/reducers/widgetsReducer";
-import { setWidgetsData } from "../../store/reducers/widgetDataReducer";
+import { setIsEditorModeOn } from "../../store/reducers/editor";
+import { setIsAuth } from "../../store/reducers/auth";
+import { setWidgetsData } from "../../store/reducers/widgets-data";
 
 const Registr = () => {
   const dispatch = useDispatch();
@@ -40,6 +38,7 @@ const Registr = () => {
   const handleLogInButtonClick = () => {
     const email = document.getElementById("LogInEmail").value;
     const password = document.getElementById("LogInPas").value;
+
     authService
       .logIn({ email, password })
       .then(function (info) {
@@ -51,12 +50,11 @@ const Registr = () => {
         dispatch(setIsEditorModeOn(false));
         alert("Incorrect login or username");
       });
+
     dashboardService
       .loadSavings()
-      .then(function (info) {
-        dispatch(setLayout(info.layout));
-        dispatch(setWidgetsArray(info.widgets));
-        dispatch(setWidgetsData(info.data));
+      .then(function (data) {
+        dispatch(setWidgetsData(data));
       })
       .catch(function (error) {
         //error
