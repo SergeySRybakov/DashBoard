@@ -6,7 +6,7 @@ import _ from "lodash";
 
 const Editor = () => {
   let numberOfEmptyPanelsInGrid = 12;
-  const layout = useSelector(state => state.layout.layout);
+  const layout = useSelector(state => state.widgetsData.widgetsData);
   const isEditorModeOn = useSelector(state => state.editor.isEditorModeOn);
 
   if (layout.length) {
@@ -23,8 +23,8 @@ const Editor = () => {
         <>
           <div style={{ position: "relative" }}>
             <div className={styles.emptyPanelsgrid}>
-              {Array.from({ length: numberOfEmptyPanelsInGrid }).map(_ => (
-                <div className={styles.emptyPanel}></div>
+              {Array.from({ length: numberOfEmptyPanelsInGrid }).map((_, i) => (
+                <div className={styles.emptyPanel} key={i}></div>
               ))}
             </div>
           </div>

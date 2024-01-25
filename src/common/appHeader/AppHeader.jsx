@@ -10,47 +10,22 @@ import {
   Menu,
   MenuList,
   MenuItem,
-  Button,
 } from "@chakra-ui/react";
 import styles from "./AppHeader.module.css";
 import { AddIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsEditorModeOn } from "../../store/reducers/editorReducer";
-import { addWidgetToArray } from "../../store/reducers/widgetsReducer";
-import { setLayout } from "../../store/reducers/layoutReducer";
+import { setIsEditorModeOn } from "../../store/reducers/editor";
+import { useWidgets } from "../../hooks/use-widgets";
+
+const ALL_WIDGET_TYPES = ["Overview", "Simple Array", "Picture", "Text"];
 
 const AppHeader = () => {
   const dispatch = useDispatch();
-  const layout = useSelector(state => state.layout.layout);
   const isAuth = useSelector(state => state.auth.isAuth);
   const isEditorMode = useSelector(state => state.editor.isEditorModeOn);
-  const widgetsArray = useSelector(state => state.widgetsArray.widgetsArray);
 
-  const addWidget = item => {
-    const NUMBER_OF_COLUMNS = 6;
+  const { addWidget } = useWidgets();
 
-    const lastWidgetPosition = layout[layout.length - 1]
-      ? layout[layout.length - 1]
-      : { x: 2, y: 2 };
-    dispatch(
-      setLayout([
-        ...layout,
-        {
-          w: 2,
-          h: 2,
-          i: widgetsArray.length ? +widgetsArray.length : 0,
-          x: +lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2 ? 1 : +lastWidgetPosition.x,
-          y:
-            +lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2
-              ? +lastWidgetPosition.y + 2
-              : +lastWidgetPosition.y + 2,
-        },
-      ]),
-    );
-    dispatch(addWidgetToArray(item));
-  };
-
-  const allWidgetOptions = ["Overview", "Simple Array", "Picture", "Text"];
   return (
     <header
       className={styles.header}
@@ -87,8 +62,10 @@ const AppHeader = () => {
               variant="outline"
             />
             <MenuList>
-              {allWidgetOptions.map(item => (
-                <MenuItem onClick={() => addWidget(item)}>{item}</MenuItem>
+              {ALL_WIDGET_TYPES.map(itemType => (
+                <MenuItem onClick={() => addWidget(itemType)} key={itemType}>
+                  {itemType}
+                </MenuItem>
               ))}
             </MenuList>
           </Menu>
