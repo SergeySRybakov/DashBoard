@@ -4,15 +4,15 @@ import { Textarea, Button } from "@chakra-ui/react";
 const OverviewTextarea = ({ data, onChange }) => {
   const [dataOverview, setDataOverview] = useState(data ?? "");
 
-  const [complaint, setComp] = useState(data[0] ?? "");
-  const [baseInf, setBase] = useState(data[1] ?? "");
+  const [complaint, setComp] = useState("");
+  const [baseInf, setBase] = useState("");
 
   useEffect(() => {
     onChange(dataOverview);
   }, [dataOverview]);
 
   const handelOverviewDataAddingButtonCkick = () => {
-    const inf = complaint.value
+    const inf = complaint
       .split(",")
       .map(function (inf) {
         return inf.trim().split(":");
@@ -24,20 +24,23 @@ const OverviewTextarea = ({ data, onChange }) => {
         };
       });
 
-    const base = baseInf.value.split(",").map(item => {
+    const base = baseInf.split(",").map(item => {
       return item.trim();
     });
+    console.log([inf, base]);
     setDataOverview([inf, base]);
   };
 
   return (
     <>
       <Textarea
+        value={complaint}
         placeholder="insert data like complaint:data, ..."
         resize={"none"}
         onChange={e => setComp(e.target.value)}
       />
       <Textarea
+        value={baseInf}
         placeholder="insert name of table, interval, percentage interval, constant line percent"
         resize={"none"}
         onChange={e => setBase(e.target.value)}

@@ -4,20 +4,19 @@ import { Button, Textarea } from "@chakra-ui/react";
 const ArrayTextarea = ({ data, onChange }) => {
   const [dataArray, setDataArray] = useState(data ?? "");
 
-  const [colNames, setColNames] = useState(data[1] ?? "");
-  const [Info, setInfo] = useState(data[0] ?? "");
+  const [colNames, setColNames] = useState("");
+  const [Info, setInfo] = useState("");
 
   useEffect(() => {
     onChange(dataArray);
   }, [dataArray]);
 
   const handelArrayDataAddingButtonCkick = () => {
-    const columns = colNames.value.split(",").map(item => {
+    const columns = colNames.split(",").map(item => {
       return item.trim();
     });
 
-    const arrayInfo = Info.value
-      .split(";")
+    const arrayInfo = Info.split(";")
       .map(arr => {
         return arr.split(",");
       })

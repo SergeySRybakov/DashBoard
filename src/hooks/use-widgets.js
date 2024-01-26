@@ -49,20 +49,20 @@ export function useWidgets() {
 
       const lastWidgetPosition = widgetsCombinedData[widgetsCombinedData.length - 1]
         ? widgetsCombinedData[widgetsCombinedData.length - 1]
-        : { x: 2, y: 2 };
+        : { x: -2, y: -2 };
 
       dispatch(
         setWidgetsData([
           ...widgetsCombinedData,
           {
+            i: uuid(),
+            x: lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2 ? 0 : lastWidgetPosition.x + 2,
+            y:
+              lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2
+                ? lastWidgetPosition.y + 2
+                : lastWidgetPosition.y + 2,
             w: 2,
             h: 2,
-            i: uuid(),
-            x: +lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2 ? 1 : +lastWidgetPosition.x,
-            y:
-              +lastWidgetPosition.x >= NUMBER_OF_COLUMNS - 2
-                ? +lastWidgetPosition.y + 2
-                : +lastWidgetPosition.y + 2,
             type: widgetType,
             data: null,
           },

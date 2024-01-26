@@ -22,9 +22,11 @@ const LoadSavings = ({ setLayout, setCounter, setArray, setWidgetData }) => {
             setCounter(info.counter);
             setArray(info.widgets);
             setWidgetData(info.data);
+            console.log(response);
           })
           .catch(function (error) {
             // обработка ошибки
+            console.log(error);
           });
       }}
     >

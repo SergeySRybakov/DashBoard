@@ -12,7 +12,7 @@ const LoadSavings = () => {
     dashboardService
       .loadSavings()
       .then(info => {
-        dispatch(setWidgetsData(info.layout));
+        dispatch(setWidgetsData(info));
       })
       .catch(() => {
         //error
@@ -46,5 +46,4 @@ const LoadSavings = () => {
     </>
   );
 };
-
 export default LoadSavings;
